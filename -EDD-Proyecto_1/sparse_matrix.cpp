@@ -2,7 +2,7 @@
 //  matrix.cpp
 //  sparse_matrix
 //
-//  Created by Carlos NG on 6/07/20.
+//  Created by Carlos NG on 5/30/20.
 //  Copyright © 2020 Carlos NG. All rights reserved.
 //
 
@@ -10,7 +10,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
 
 using namespace std;
 
@@ -102,7 +101,7 @@ Node* Matrix::SearchY(string y)
     return nullptr;
 }
 
-void Matrix::insert(string x, string y, string value)
+void Matrix::insert(string x, string y, string value))
 {
     Node* p = new Node(value);
     Node* x_header;
@@ -331,11 +330,11 @@ void Matrix::printY()
     cout << p -> getData() << endl;
 }
 
-void Matrix::buildGraph()
+void Matrix::getDot()
 {
     
     ofstream file;
-    file.open("matrix.dot", ios::out);
+    file.open("output/example.dot", ios::out);
     
     file << "digraph g{" << endl;
     file << "rankdir = TB;" << endl;
@@ -481,7 +480,7 @@ void Matrix::buildGraph()
 void Matrix::showGraph()
 {
     try{
-        system("dot -Tpng matrix.dot -o matrix.png");
+        system("dot -Tpng output/example.dot -o output/example.png");
         system("example.png");
     }
     catch(exception e)

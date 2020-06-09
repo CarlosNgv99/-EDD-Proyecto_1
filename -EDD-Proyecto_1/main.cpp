@@ -8,8 +8,16 @@
 
 #include <iostream>
 #include "sparse_matrix.hpp"
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include "random_string.hpp"
+#include "menu.hpp"
+std::string random_string( size_t length );
 int main() {
-    
+    Menu menu;
+    menu.mainLogin();
     return 0;
 }
+

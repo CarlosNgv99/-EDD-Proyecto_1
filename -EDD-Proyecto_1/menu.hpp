@@ -10,7 +10,13 @@
 #define menu_hpp
 
 #include <stdio.h>
-
-
+class Menu{
+public:
+    Menu(){};
+    void showMainMenu();
+    void mainLogin();
+    void signIn();
+    void signUp();
+};
 
 #endif /* menu_hpp */

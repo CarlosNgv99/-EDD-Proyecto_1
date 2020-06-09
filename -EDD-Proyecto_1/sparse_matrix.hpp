@@ -2,13 +2,13 @@
 //  matrix.hpp
 //  sparse_matrix
 //
-//  Created by Carlos NG on 6/07/20.
+//  Created by Carlos NG on 5/30/20.
 //  Copyright © 2020 Carlos NG. All rights reserved.
 //
 
-#ifndef sparse_matrix_hpp
-#define sparse_matrix_hpp
-
+#ifndef matrix_hpp
+#define matrix_hpp
+#include "user.hpp"
 #include <stdio.h>
 #include <iostream>
 #include <string>
@@ -18,6 +18,7 @@ class Matrix;
 class Node {
 private:
     std::string data;
+    User* user;
     Node* right;
     Node* left;
     Node* up;
@@ -30,7 +31,8 @@ public:
     bool linkL;
     bool linkD;
     bool linkU;
-    Node(std::string data){
+    Node(std::string data, User* value){
+        this -> user = value;
         this -> data = data;
         right = NULL;
         left = NULL;
@@ -101,16 +103,17 @@ private:
 public:
     Matrix()
     {
-        header = new Node("Header");
+        header = new Node("Header", nullptr);
     };
     void add(std::string,std::string,std::string);
     void addX(std::string);
     void addY(std::string);
     void insert(std::string,std::string,std::string);
-    void buildGraph();
+    void getDot();
+    void draw();
+    void showGraph();
     void printY();
     void printX();
-    void showGraph();
     Node* SearchX(std::string);
     Node* SearchY(std::string);
     bool verifyX(std::string,Node*,Node*);
