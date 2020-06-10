@@ -31,7 +31,7 @@ public:
     bool linkL;
     bool linkD;
     bool linkU;
-    Node(std::string data, User* value){
+    Node(std::string data, User* value){ // Send user's username and object User
         this -> user = value;
         this -> data = data;
         right = NULL;
@@ -94,6 +94,14 @@ public:
     {
         data = value;
     }
+    User* getUser()
+    {
+        return user;
+    }
+    void setUser(User* value)
+    {
+        user = value;
+    }
 };
 
 class Matrix
@@ -105,10 +113,10 @@ public:
     {
         header = new Node("Header", nullptr);
     };
-    void add(std::string,std::string,std::string);
+    void add(std::string,std::string,std::string, User* user);
     void addX(std::string);
     void addY(std::string);
-    void insert(std::string,std::string,std::string);
+    void insert(std::string,std::string,std::string, User* user);
     void getDot();
     void draw();
     void showGraph();

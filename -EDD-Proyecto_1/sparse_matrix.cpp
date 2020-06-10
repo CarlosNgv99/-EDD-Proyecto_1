@@ -13,13 +13,13 @@
 
 using namespace std;
 
-void Matrix::add(std::string x, std::string y, std::string value)
+void Matrix::add(std::string x, std::string y, std::string value, User* user)
 {
     if(SearchX(x) == NULL)
         addX(x);
     if(SearchY(y) == NULL)
         addY(y);
-    insert(x, y, value);
+    insert(x, y, value, user);
 }
 
 void Matrix::addX(std::string x)
@@ -28,7 +28,7 @@ void Matrix::addX(std::string x)
     p = header;
     if(p -> getRight() == NULL)
     {
-        Node* q = new Node(x);
+        Node* q = new Node(x,nullptr);
         p -> setRight(q);
         q -> setLeft(p);
     }
@@ -40,7 +40,7 @@ void Matrix::addX(std::string x)
         }
         if(p -> getRight() == NULL && p ->getData() != x)
         {
-            Node* q = new Node(x);
+            Node* q = new Node(x,nullptr);
             p -> setRight(q);
             q -> setLeft(p);
         }
@@ -54,7 +54,7 @@ void Matrix::addY(string y)
     Node* p = header;
     if(p -> getDown() == NULL)
     {
-        Node* q = new Node(y);
+        Node* q = new Node(y,nullptr);
         p -> setDown(q);
         q -> setUp(p);
     }
@@ -66,7 +66,7 @@ void Matrix::addY(string y)
         }
         if(p -> getDown() == NULL && p -> getData() != y)
         {
-            Node* q = new Node(y);
+            Node* q = new Node(y,nullptr);
             p -> setDown(q);
             q -> setUp(p);
         }
@@ -101,9 +101,9 @@ Node* Matrix::SearchY(string y)
     return nullptr;
 }
 
-void Matrix::insert(string x, string y, string value))
+void Matrix::insert(string x, string y, string username, User* user)
 {
-    Node* p = new Node(value);
+    Node* p = new Node(username, user);
     Node* x_header;
     Node* y_header;
     
@@ -334,13 +334,13 @@ void Matrix::getDot()
 {
     
     ofstream file;
-    file.open("output/example.dot", ios::out);
+    file.open("matrix.dot", ios::out);
     
     file << "digraph g{" << endl;
     file << "rankdir = TB;" << endl;
     file << "node [shape=rectangle, height=0.5, width=0.5];" << endl;
     file << "graph[ nodesep = 0.5];" << endl;
-    file << "node0 [label="<<"\""<<header -> getData()<<"\""<<"];" << endl;
+    file << "node0 [label="<<"\""<< header -> getData()<<"\""<<"];" << endl;
     
     // COLUMNS
     
@@ -409,8 +409,8 @@ void Matrix::getDot()
                 {
                     if(aux -> linkR == false)
                     {
-                        file << aux -> getRight() -> getData() << "->" << aux ->getData() << "[constraint=false, dir=both];" << endl;
-                        file << "{rank=same; " << aux -> getRight() -> getData() <<"; " << aux -> getData() <<";}"<<endl;
+                        file << aux -> getRight() -> getData() << "->" << aux -> getData() << "[constraint=false, dir=both];" << endl;
+                        file << "{rank=same; " << aux -> getRight() -> getData() <<"; " << aux -> getUser() -> getUser() <<";}"<<endl;
                         aux -> getRight() -> linkU = false;
                         aux -> getRight() -> linkR = true;
                         aux -> getRight() -> linkD = false;
@@ -434,7 +434,7 @@ void Matrix::getDot()
                 {
                     if(aux -> linkU == false)
                     {
-                        file << aux -> getUp() -> getData() << "->" << aux ->getData() << "[dir=both]" << endl;
+                        file << aux -> getUp() -> getData() << "->" << aux -> getData() << "[dir=both]" << endl;
                         aux -> linkU = true;
                         aux -> linkR = true;
                         aux -> linkD = true;
@@ -445,7 +445,7 @@ void Matrix::getDot()
                 {
                     if(aux -> linkD == false)
                     {
-                        file << aux -> getDown() -> getData() << "->" << aux ->getData() << "[dir=both]" << endl;
+                        file << aux -> getDown() -> getData() << "->" << aux -> getData() << "[dir=both]" << endl;
                         aux -> getDown() -> linkU = true;
                         aux -> getDown() -> linkR = true;
                         aux -> getDown() -> linkD = false;
@@ -480,8 +480,8 @@ void Matrix::getDot()
 void Matrix::showGraph()
 {
     try{
-        system("dot -Tpng output/example.dot -o output/example.png");
-        system("example.png");
+        system("dot -Tpng matrix.dot -o matrix.png");
+        system("matrix.png");
     }
     catch(exception e)
     {
