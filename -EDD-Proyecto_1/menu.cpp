@@ -15,7 +15,9 @@
 #include "random_string.hpp"
 #include "sparse_matrix.hpp"
 #include <unistd.h>
-
+#include "transaction.hpp"
+#include "assets.hpp"
+#include "circular_double_linked_list.hpp"
 using namespace std;
 Matrix matrix;
 Random rando;
@@ -216,7 +218,7 @@ void Menu::userMenu(std::string username)
 
 void Menu::addAsset(std::string username)
 {
-    string asset, description;
+    std::string asset, description;
     cout << ">> ************************ "<< username <<" ************************" << endl;
     cout << ">> ************************* Agregar Activo *************************" << endl;
     cout << ">> ******* Nombre del activo: " << endl;
@@ -225,4 +227,5 @@ void Menu::addAsset(std::string username)
     cout << ">> ******* Descripción del activo: " << endl;
     cout << ">> ";
     cin >> description;
+    Asset* newAsset = new Asset(1, asset, description);
 }
