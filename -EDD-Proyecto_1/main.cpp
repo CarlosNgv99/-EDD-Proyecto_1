@@ -17,7 +17,7 @@
 std::string random_string( size_t length );
 int main() {
     Menu menu;
-    menu.mainLogin();
+    menu.mainMenu();
     return 0;
 }
 

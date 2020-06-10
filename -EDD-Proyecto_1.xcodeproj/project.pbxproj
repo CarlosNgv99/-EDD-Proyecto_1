@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		61021383248EC6D900E03463 /* sparse_matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61021381248EC6D900E03463 /* sparse_matrix.cpp */; };
 		61021386248EC8A200E03463 /* menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61021384248EC8A200E03463 /* menu.cpp */; };
+		612CB3D32490B37F007D4CD9 /* transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 612CB3D12490B37F007D4CD9 /* transaction.cpp */; };
+		612CB3D62490B4BE007D4CD9 /* circular_double_linked_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 612CB3D42490B4BE007D4CD9 /* circular_double_linked_list.cpp */; };
+		612CB3D92490BBD2007D4CD9 /* assets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 612CB3D72490BBD2007D4CD9 /* assets.cpp */; };
 		61CC2374249034400096F0C5 /* random_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61CC2372249034400096F0C5 /* random_string.cpp */; };
 		61CC2377249042E90096F0C5 /* user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61CC2375249042E90096F0C5 /* user.cpp */; };
 		61DF3803248B4F44006EE2A5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61DF3802248B4F44006EE2A5 /* main.cpp */; };
@@ -31,6 +34,12 @@
 		61021382248EC6D900E03463 /* sparse_matrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sparse_matrix.hpp; sourceTree = "<group>"; };
 		61021384248EC8A200E03463 /* menu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = menu.cpp; sourceTree = "<group>"; };
 		61021385248EC8A200E03463 /* menu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = menu.hpp; sourceTree = "<group>"; };
+		612CB3D12490B37F007D4CD9 /* transaction.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = transaction.cpp; sourceTree = "<group>"; };
+		612CB3D22490B37F007D4CD9 /* transaction.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = transaction.hpp; sourceTree = "<group>"; };
+		612CB3D42490B4BE007D4CD9 /* circular_double_linked_list.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = circular_double_linked_list.cpp; sourceTree = "<group>"; };
+		612CB3D52490B4BE007D4CD9 /* circular_double_linked_list.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = circular_double_linked_list.hpp; sourceTree = "<group>"; };
+		612CB3D72490BBD2007D4CD9 /* assets.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = assets.cpp; sourceTree = "<group>"; };
+		612CB3D82490BBD2007D4CD9 /* assets.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = assets.hpp; sourceTree = "<group>"; };
 		61CC2372249034400096F0C5 /* random_string.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = random_string.cpp; sourceTree = "<group>"; };
 		61CC2373249034400096F0C5 /* random_string.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = random_string.hpp; sourceTree = "<group>"; };
 		61CC2375249042E90096F0C5 /* user.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = user.cpp; sourceTree = "<group>"; };
@@ -78,6 +87,12 @@
 				61CC2373249034400096F0C5 /* random_string.hpp */,
 				61CC2375249042E90096F0C5 /* user.cpp */,
 				61CC2376249042E90096F0C5 /* user.hpp */,
+				612CB3D12490B37F007D4CD9 /* transaction.cpp */,
+				612CB3D22490B37F007D4CD9 /* transaction.hpp */,
+				612CB3D42490B4BE007D4CD9 /* circular_double_linked_list.cpp */,
+				612CB3D52490B4BE007D4CD9 /* circular_double_linked_list.hpp */,
+				612CB3D72490BBD2007D4CD9 /* assets.cpp */,
+				612CB3D82490BBD2007D4CD9 /* assets.hpp */,
 			);
 			path = "-EDD-Proyecto_1";
 			sourceTree = "<group>";
@@ -139,10 +154,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				612CB3D62490B4BE007D4CD9 /* circular_double_linked_list.cpp in Sources */,
+				612CB3D32490B37F007D4CD9 /* transaction.cpp in Sources */,
 				61021383248EC6D900E03463 /* sparse_matrix.cpp in Sources */,
 				61CC2374249034400096F0C5 /* random_string.cpp in Sources */,
 				61DF3803248B4F44006EE2A5 /* main.cpp in Sources */,
 				61CC2377249042E90096F0C5 /* user.cpp in Sources */,
+				612CB3D92490BBD2007D4CD9 /* assets.cpp in Sources */,
 				61021386248EC8A200E03463 /* menu.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

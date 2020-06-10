@@ -127,6 +127,10 @@ public:
     bool verifyX(std::string,Node*,Node*);
     bool verifyY(std::string,Node*,Node*);
     Node* SearchValue(std::string,std::string);
+    Node* getHeader()
+    {
+        return header;
+    }
 };
 
 #endif /* matrix_hpp */

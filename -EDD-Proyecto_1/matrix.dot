@@ -3,12 +3,18 @@ rankdir = TB;
 node [shape=rectangle, height=0.5, width=0.5];
 graph[ nodesep = 0.5];
 node0 [label="Header"];
-sdf[label="sdf"]
-node0->sdf[dir=both];
-sd[label="sd"]
-node0->sd[dir=both];
-sdf[label="sdf"]
-sd->sdf[constraint=false, dir=both];
-{rank=same; sd; sdf;}
-sdf->sdf[dir=both]
-{rank=same; node0; sdf;}}
+Guatemala[label="Guatemala"]
+node0->Guatemala[dir=both];
+Apple[label="Apple"]
+Max[label="Max"]
+node0->Apple[dir=both];
+Apple->Max[dir=both];
+carlosngv[label="carlosngv"]
+Apple->carlosngv[constraint=false, dir=both];
+{rank=same; Apple; carlosngv;}
+Guatemala->carlosngv[dir=both]
+JuanIbarra[label="JuanIbarra"]
+Max->JuanIbarra[constraint=false, dir=both];
+{rank=same; Max; JuanIbarra;}
+carlosngv->JuanIbarra[dir=both]
+{rank=same; node0; Guatemala;}}

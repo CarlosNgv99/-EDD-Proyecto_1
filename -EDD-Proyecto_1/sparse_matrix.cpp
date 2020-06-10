@@ -393,7 +393,6 @@ void Matrix::getDot()
     Node* x_axis = header;
     Node* y_axis = header;
     Node* aux = nullptr;
-    string array[100];
     
     while(x_axis -> getRight() != NULL)
     {
@@ -409,8 +408,8 @@ void Matrix::getDot()
                 {
                     if(aux -> linkR == false)
                     {
-                        file << aux -> getRight() -> getData() << "->" << aux -> getData() << "[constraint=false, dir=both];" << endl;
-                        file << "{rank=same; " << aux -> getRight() -> getData() <<"; " << aux -> getUser() -> getUser() <<";}"<<endl;
+                        file << aux -> getRight() -> getData() << "->" << aux ->getData() << "[constraint=false, dir=both];" << endl;
+                        file << "{rank=same; " << aux -> getRight() -> getData() <<"; " << aux -> getData() <<";}"<<endl;
                         aux -> getRight() -> linkU = false;
                         aux -> getRight() -> linkR = true;
                         aux -> getRight() -> linkD = false;
@@ -434,7 +433,7 @@ void Matrix::getDot()
                 {
                     if(aux -> linkU == false)
                     {
-                        file << aux -> getUp() -> getData() << "->" << aux -> getData() << "[dir=both]" << endl;
+                        file << aux -> getUp() -> getData() << "->" << aux ->getData() << "[dir=both]" << endl;
                         aux -> linkU = true;
                         aux -> linkR = true;
                         aux -> linkD = true;
@@ -445,7 +444,7 @@ void Matrix::getDot()
                 {
                     if(aux -> linkD == false)
                     {
-                        file << aux -> getDown() -> getData() << "->" << aux -> getData() << "[dir=both]" << endl;
+                        file << aux -> getDown() -> getData() << "->" << aux ->getData() << "[dir=both]" << endl;
                         aux -> getDown() -> linkU = true;
                         aux -> getDown() -> linkR = true;
                         aux -> getDown() -> linkD = false;
