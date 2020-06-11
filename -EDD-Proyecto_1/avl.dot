@@ -1,1 +1,0 @@
-digraph g{ node [fontname="Arial"];IPad[label=IPad];IPhone[label=IPhone];IPhone->{IPad};IPhone->{Laptop};IWatch[label=IWatch];Laptop[label=Laptop];Laptop->{IWatch};Laptop->{MagicMouse};MagicMouse[label=MagicMouse];}

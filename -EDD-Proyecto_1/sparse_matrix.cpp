@@ -87,6 +87,8 @@ Node* Matrix::SearchX(string x)
     return nullptr;
 }
 
+
+
 Node* Matrix::SearchY(string y)
 {
     Node* p = header;
@@ -334,7 +336,7 @@ void Matrix::getDot()
 {
     
     ofstream file;
-    file.open("matrix.dot", ios::out);
+    file.open("matrix/matrix.dot", ios::out);
     
     file << "digraph g{" << endl;
     file << "rankdir = TB;" << endl;
@@ -479,10 +481,62 @@ void Matrix::getDot()
 void Matrix::showGraph()
 {
     try{
-        system("dot -Tpng matrix.dot -o matrix.png");
+        system("dot -Tpng matrix/matrix.dot -o matrix/matrix.png");
         system("matrix.png");
     }
     catch(exception e)
     {
+    }
+}
+
+
+void Matrix::SearchXAssets(string x)
+{
+    Node* p = header;
+    Node* aux = nullptr;
+    cout << ">> ******* Departamento de " << x << endl;
+    while(p -> getRight() != NULL)
+    {
+        p = p -> getRight();
+        if(p -> getData() == x)
+        {
+            aux = p;
+            break;
+        }
+    }
+    while(aux -> getDown() != NULL)
+    {
+        aux = aux -> getDown();
+        cout << ">> ******* Activos de usuario: " << aux -> getUser() -> getUser() << endl;
+        aux -> getUser() -> getAVLTree() -> Preorder(aux -> getUser() -> getAVLTree() -> getRoot());
+        cout << ">> ******* Gráfica generada..."<<endl;
+        aux -> getUser() -> getAVLTree() -> graphAVL(aux -> getUser() -> getUser());
+
+    }
+}
+
+
+
+void Matrix::SearchYAssets(string y)
+{
+    Node* p = header;
+    Node* aux = nullptr;
+    while(p -> getDown() != NULL)
+    {
+        p = p -> getDown();
+        if(p -> getData() == y)
+        {
+            aux = p;
+            break;
+        }
+    }
+    while(aux -> getRight() != NULL)
+    {
+        aux = aux -> getRight();
+        cout << "Activos de usuario: " << aux -> getUser() -> getUser() << endl;
+        aux -> getUser() -> getAVLTree() -> Preorder(aux -> getUser() -> getAVLTree() -> getRoot());
+        cout << ">> ******* Gráfica generada..."<<endl;
+        aux -> getUser() -> getAVLTree() -> graphAVL(aux -> getUser() -> getUser());
+
     }
 }

@@ -16,21 +16,21 @@ class Transaction
 {
 private:
     std::string id;
-    std::string rented_id;
+    std::string asste_id;
     User* user;
     std::string date;
     std::string time_rented;
 public:
-    Transaction(std::string id, std::string rented_id, User* user, std::string date, std::string time_rented)
+    Transaction(std::string id, std::string asset_id, User* user, std::string date, std::string time_rented)
     {
         this -> id = id;
-        this -> rented_id = rented_id;
+        this -> asste_id = asset_id;
         this -> user = user;
         this -> date = date;
         this -> time_rented = time_rented;
     }
     std::string getId(){return id;};
-    std::string getRentedid(){return rented_id;};
+    std::string getRentedid(){return asste_id;};
     User* getUser(){return user;};
     std::string getDate(){return date;};
     std::string getTimeRented(){return time_rented;};

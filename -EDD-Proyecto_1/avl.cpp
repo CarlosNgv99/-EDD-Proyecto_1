@@ -102,7 +102,7 @@ TreeNode* Tree::Search(TreeNode* node, std::string value) // Extracted from BST
             }
             else
             {
-                std::cout << "Node found: " << node -> getData() << std::endl;
+                std::cout << "Node found: " << node -> getAsset() -> getName() << std::endl;
                 return node;
             }
         }
@@ -485,10 +485,10 @@ void Tree::Remove(TreeNode *p, TreeNode *pAnt, int *auxValue, std::string value)
     }
 }
 
-void Tree::graphAVL()
+void Tree::graphAVL(std::string name)
 {
     ofstream file;
-    file.open("avl.dot", ios::out);
+    file.open("avlTrees/"+name+".dot", ios::out);
     str = "digraph g{ ";
     str += "node [fontname=";
     str+="\"Arial\"";
@@ -497,8 +497,11 @@ void Tree::graphAVL()
     str += "}";
     file << str << endl;
     file.close();
-    system("dot -Tpng avl.dot -o avl.png");
-    system("avl.png");
+    
+    std::string dotName ="dot -Tpng avlTrees/"+ name +".dot -o avlTrees/"+name+".png";
+    std::string pngFile = name+".png";
+    system(dotName.c_str());
+    system(pngFile.c_str());
 
 
     
@@ -533,4 +536,18 @@ void Tree::Preorder(TreeNode *node)
         Preorder(node -> left);
         Preorder(node -> right);
     }
+}
+
+TreeNode* Tree::Preorder2(TreeNode *node, int id_num)
+{
+    if(node != NULL)
+    {
+        if(node -> getAsset() -> getIdNum() == id_num)
+        {
+            return node;
+        }
+        Preorder2(node -> left,id_num);
+        Preorder2(node -> right,id_num);
+    }
+    return nullptr;
 }

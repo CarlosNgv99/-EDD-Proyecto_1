@@ -18,6 +18,7 @@
 #include "transaction.hpp"
 #include "assets.hpp"
 #include "circular_double_linked_list.hpp"
+
 using namespace std;
 Matrix matrix;
 Random rando;
@@ -80,7 +81,8 @@ void Menu::signIn()
     }
     else if((aux -> getUser() ->getUser()).compare(user) == 0 && (aux -> getUser() -> getPassword()).compare(password) == 0 )
     {
-        cout << ">> Bienvenido " << (aux -> getUser() ->getUser()) <<"..."<< endl;
+        system("clear");
+        cout << ">> ******** Bienvenido " << (aux -> getUser() ->getUser()) <<"..."<< endl;
         cout << ">> Redirigiendo al menú..." << endl;
         sleep(2);
         userMenu(aux);
@@ -183,8 +185,20 @@ void Menu::adminMenu()
                 sleep(2);
                 adminMenu();
                 break;
+            case 3:
+                departmentAssetsReport();
+                break;
+            case 4:
+                companyAssetsReport();
+                break;
+            case 6:
+                userAssetsReport();
+                break;
             case 9:
                 mainMenu();
+                break;
+            default:
+                adminMenu();
                 break;
         }
     }while(option <= 0 || option > 9);
@@ -209,14 +223,16 @@ void Menu::userMenu(Node* user)
         {
             case 1:
                 addAsset(user);
+
                 break;
             case 2:
-                removeAsset(user);
-                break;
-            case 3:
-                user -> getUser() -> getAVLTree() -> graphAVL();
+                
                 sleep(1);
                 userMenu(user);
+                break;
+            case 3:
+                removeAsset(user);
+                break;
             case 7:
                 mainMenu();
                 break;
@@ -233,7 +249,7 @@ void Menu::addAsset(Node* user)
     id = rando.random_string(15);
     int band = 0;
     cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
-    cout << ">> ************************* Agregar Activo *************************" << endl;
+    cout << ">> **************************** Agregar Activo ****************************" << endl;
     cout << ">> ******* Nombre del activo: " << endl;
     cout << ">> ";
     cin >> asset;
@@ -250,13 +266,93 @@ void Menu::addAsset(Node* user)
 
 void Menu::removeAsset(Node* user)
 {
+    TreeNode* aux;
+    int band = 0;
     system("clear");
     int opcion;
     cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
-    cout << ">> ************************* Eliminar Activo *************************" << endl;
+    cout << ">> ********************************* Eliminar Activo **********************************" << endl;
     user -> getUser() -> getAVLTree() -> Preorder(user -> getUser() -> getAVLTree() -> getRoot());
     cout << ">> Elija cuál activo eliminar (ID): ";
     cin >> opcion;
     sleep(2);
+    aux = user -> getUser() -> getAVLTree() -> Preorder2(user -> getUser() -> getAVLTree() -> getRoot(), opcion);
+    system("clear");
+    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
+    cout << ">> ********************************* Activo a Eliminar **********************************" << endl;
+    cout << ">> ****** Nombre: " << aux ->getAsset()->getName() << endl;
+    cout << ">> ****** ID: " << aux -> getAsset() -> getIdNum() << endl;
+    cout << ">> ****** Descripción " << aux -> getAsset() -> getDescription() << endl;
+    
+    user -> getUser() -> getAVLTree() -> Remove(user -> getUser() ->getAVLTree() -> getRoot(), NULL, &band, aux -> getAsset() -> getId());
+    cout << ">> Activo eliminado exitosamente. Regresando al menú..." << endl;
+    sleep(2);
     userMenu(user);
+}
+
+void Menu::userAssetsReport()
+{
+    Node* aux;
+    
+    std::string user, company, department;
+    system("clear");
+    cout << ">> ************************ Administrador ************************" << endl;
+    cout << ">> ******************* Reporte Activos Usuario *******************" << endl;
+    cout << ">> ****** Usuario:" << endl;
+    cout <<">> ";
+    cin >> user;
+    cout << ">> ****** Departamento:" << endl;
+    cout <<">> ";
+    cin >> department;
+    cout << ">> ****** Empresa:" << endl;
+    cout <<">> ";
+    cin >> company;
+    aux = matrix.SearchValue(department, company);
+    if(aux != NULL)
+    {
+        cout << ">> Verificando usuario..." << endl;
+        sleep(2);
+        system("clear");
+        cout << ">> ************************ Administrador ************************" << endl;
+        cout << ">> ******************* Reporte Activos"<< aux -> getUser() -> getUser() <<"*******************" << endl;
+        aux -> getUser() -> getAVLTree() -> Preorder(aux -> getUser() -> getAVLTree() -> getRoot());
+        cout << ">> Se ha generado la grafica de los activos del usuario. Redirigiendolo al menu..." << endl;
+        sleep(4);
+        aux -> getUser() -> getAVLTree() -> graphAVL(aux -> getUser() -> getUser());
+        adminMenu();
+    }
+    else
+    {
+        cout << ">> El usuario no fue encontrado. Verifique sus datos..." << endl;
+        sleep(2);
+        adminMenu();
+    }
+}
+
+void Menu::departmentAssetsReport()
+{
+    system("clear");
+    std::string department;
+    cout << ">> ************************ Administrador ************************" << endl;
+    cout << ">> ************** Reporte Activos por Departamento ***************" << endl;
+    cout << ">> Departamento: " << endl;
+    cout << ">> ";
+    cin >> department;
+    matrix.SearchXAssets(department);
+    sleep(5);
+    adminMenu();
+}
+
+void Menu::companyAssetsReport()
+{
+    system("clear");
+    std::string company;
+    cout << ">> ************************ Administrador ************************" << endl;
+    cout << ">> ***************** Reporte Activos por Empresa *****************" << endl;
+    cout << ">> Empresa: " << endl;
+    cout << ">> ";
+    cin >> company;
+    matrix.SearchYAssets(company);
+    sleep(5);
+    adminMenu();
 }

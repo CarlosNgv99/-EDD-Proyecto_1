@@ -9,16 +9,23 @@ node0->Guatemala[dir=both];
 Guatemala->Jalapa[dir=both];
 Apple[label="Apple"]
 Samsung[label="Samsung"]
+Max[label="Max"]
 node0->Apple[dir=both];
 Apple->Samsung[dir=both];
-carlosngv[label="carlosngv"]
-Apple->carlosngv[constraint=false, dir=both];
-{rank=same; Apple; carlosngv;}
-Guatemala->carlosngv[dir=both]
-carlosngv[label="carlosngv"]
-carlosng[label="carlosng"]
-Samsung->carlosng[constraint=false, dir=both];
-{rank=same; Samsung; carlosng;}
-Jalapa->carlosng[dir=both]
-carlosng[label="carlosng"]
+Samsung->Max[dir=both];
+carlonsgv[label="carlonsgv"]
+Apple->carlonsgv[constraint=false, dir=both];
+{rank=same; Apple; carlonsgv;}
+Guatemala->carlonsgv[dir=both]
+luis123[label="luis123"]
+Samsung->luis123[constraint=false, dir=both];
+{rank=same; Samsung; luis123;}
+carlonsgv->luis123[dir=both]
+luis123[label="luis123"]
+juanito[label="juanito"]
+Max->juanito[constraint=false, dir=both];
+{rank=same; Max; juanito;}
+Jalapa->juanito[dir=both]
+juanito[label="juanito"]
+juanito[label="juanito"]
 {rank=same; node0; Guatemala; Jalapa;}}

@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <string>
 #include "avl.hpp"
+class User;
 class User
 {
 private:
@@ -29,6 +30,7 @@ public:
         this -> company = company;
         this -> avlTree = newTree;
     };
+    
     std::string getUser(){return user;};
     std::string getPassword(){return password;};
     std::string getDepartment(){return department;};
