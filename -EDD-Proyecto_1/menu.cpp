@@ -21,6 +21,7 @@
 using namespace std;
 Matrix matrix;
 Random rando;
+int id_num = 0;
 void Menu::mainMenu()
 {
     system("clear");
@@ -82,7 +83,7 @@ void Menu::signIn()
         cout << ">> Bienvenido " << (aux -> getUser() ->getUser()) <<"..."<< endl;
         cout << ">> Redirigiendo al menú..." << endl;
         sleep(2);
-        userMenu((aux -> getUser() ->getUser()));
+        userMenu(aux);
     }
     else
     {
@@ -122,7 +123,7 @@ void Menu::newUser()
     system("clear");
     std::string password, department, company, id;
     string user;
-    id = rando.random_string(15);
+    
     cout << ">> ************************ Administrador ************************" << endl;
     cout << ">> ******* Usuario: " << endl;
     cout << ">> ";
@@ -143,7 +144,8 @@ void Menu::newUser()
         sleep(2);
         newUser();
     }
-    User* newUser = new User(id, user, password, department, company);
+    Tree* tree = new Tree();
+    User* newUser = new User(user, password, department, company, tree);
     matrix.add(department,company, user, newUser);
     sleep(2);
     adminMenu();
@@ -181,15 +183,18 @@ void Menu::adminMenu()
                 sleep(2);
                 adminMenu();
                 break;
+            case 9:
+                mainMenu();
+                break;
         }
     }while(option <= 0 || option > 9);
 }
 
-void Menu::userMenu(std::string username)
+void Menu::userMenu(Node* user)
 {
     system("clear");
     int option;
-    cout << ">> ************************ "<< username <<" ************************" << endl;
+    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
     cout << ">> ******* 1. Agregar Activo" << endl;
     cout << ">> ******* 2. Modificar Activo" << endl;
     cout << ">> ******* 3. Eliminar Activo" << endl;
@@ -203,10 +208,15 @@ void Menu::userMenu(std::string username)
         switch(option)
         {
             case 1:
-                addAsset(username);
+                addAsset(user);
                 break;
             case 2:
+                removeAsset(user);
                 break;
+            case 3:
+                user -> getUser() -> getAVLTree() -> graphAVL();
+                sleep(1);
+                userMenu(user);
             case 7:
                 mainMenu();
                 break;
@@ -216,10 +226,13 @@ void Menu::userMenu(std::string username)
     }while(option <= 0 || option > 8);
 }
 
-void Menu::addAsset(std::string username)
+void Menu::addAsset(Node* user)
 {
-    std::string asset, description;
-    cout << ">> ************************ "<< username <<" ************************" << endl;
+    system("clear");
+    std::string id, asset, description;
+    id = rando.random_string(15);
+    int band = 0;
+    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
     cout << ">> ************************* Agregar Activo *************************" << endl;
     cout << ">> ******* Nombre del activo: " << endl;
     cout << ">> ";
@@ -227,5 +240,23 @@ void Menu::addAsset(std::string username)
     cout << ">> ******* Descripción del activo: " << endl;
     cout << ">> ";
     cin >> description;
-    Asset* newAsset = new Asset(1, asset, description);
+    cout << "Activo agregado exitosamente." << endl;
+    Asset* newAsset = new Asset(id_num, id, asset, description);
+    user -> getUser() -> getAVLTree() -> Insert(newAsset, user -> getUser() -> getAVLTree() -> getRoot(), &band);
+    id_num++;
+    sleep(2);
+    userMenu(user);
+}
+
+void Menu::removeAsset(Node* user)
+{
+    system("clear");
+    int opcion;
+    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
+    cout << ">> ************************* Eliminar Activo *************************" << endl;
+    user -> getUser() -> getAVLTree() -> Preorder(user -> getUser() -> getAVLTree() -> getRoot());
+    cout << ">> Elija cuál activo eliminar (ID): ";
+    cin >> opcion;
+    sleep(2);
+    userMenu(user);
 }

@@ -8,18 +8,14 @@
 
 #include "avl.hpp"
 #include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
 
-void Tree::Preorder(Node* node)
-{
-    if(node != NULL)
-    {
-        std::cout << node -> data << " ";
-        Preorder(node -> left);
-        Preorder(node -> right);
-    }
-}
+std::string str;
 
-Node* Tree::LLRotation(Node* p, Node* aux)
+
+TreeNode* Tree::LLRotation(TreeNode* p, TreeNode* aux)
 {
     p -> setLeft(aux -> getRight());
     aux -> setRight(p);
@@ -27,7 +23,7 @@ Node* Tree::LLRotation(Node* p, Node* aux)
     return aux;
 }
 
-Node* Tree::RRRotation(Node* p, Node* aux)
+TreeNode* Tree::RRRotation(TreeNode* p, TreeNode* aux)
 {
     p -> setRight(aux -> getLeft());
     aux -> setLeft(p);
@@ -35,9 +31,9 @@ Node* Tree::RRRotation(Node* p, Node* aux)
     return aux;
 }
 
-Node* Tree::LRRotation(Node* p, Node* aux)
+TreeNode* Tree::LRRotation(TreeNode* p, TreeNode* aux)
 {
-    Node* aux2;
+    TreeNode* aux2;
     aux2 = aux -> getRight();
     p -> setLeft(aux2 -> getRight());
     aux2 -> setRight(p);
@@ -63,9 +59,9 @@ Node* Tree::LRRotation(Node* p, Node* aux)
     
 }
 
-Node* Tree::RLRotation(Node* p, Node* aux)
+TreeNode* Tree::RLRotation(TreeNode* p, TreeNode* aux)
 { // CAMBIAR ESTE
-    Node* aux2;
+    TreeNode* aux2;
     aux2 = aux -> getLeft();
     p -> setRight(aux2 -> getLeft());
     aux2 -> setLeft(p);
@@ -90,17 +86,17 @@ Node* Tree::RLRotation(Node* p, Node* aux)
     return aux2;
 }
 
-Node* Tree::Search(Node* node, int value) // Extracted from BST
+TreeNode* Tree::Search(TreeNode* node, std::string value) // Extracted from BST
 {
     if(node != nullptr)
     {
-        if(value < node -> getData())
+        if(value < (node -> getAsset() -> getId()))
         {
             return Search(node -> getLeft(), value);
         }
         else
         {
-            if(value > node -> getData())
+            if(value > (node -> getAsset() -> getId()))
             {
                 return Search(node -> getRight(), value);
             }
@@ -118,15 +114,15 @@ Node* Tree::Search(Node* node, int value) // Extracted from BST
     }
 }
 
-void Tree::Insert(int value, Node* p, int* valueAux) // data to insert, Node to visit and aux value. (valueAux = 0)
+void Tree::Insert(Asset* asset, TreeNode* p, int* valueAux) // data to insert, Node to visit and aux value. (valueAux = 0)
 {
-    Node* aux1, *aux2;
+    TreeNode* aux1, *aux2;
     if(p != NULL) // verifies if pointer is not empty
     {
-        if(value < p -> getData())
+        if(asset -> getId() <  (p -> getAsset() -> getId()))
         {
             // starts method at left subtree.
-            Insert(value, p -> getLeft(), valueAux);
+            Insert(asset, p -> getLeft(), valueAux);
             p -> setLeft(root);
             if(0 < *valueAux) // Verify if left subtree has grown.
             {
@@ -162,10 +158,10 @@ void Tree::Insert(int value, Node* p, int* valueAux) // data to insert, Node to 
         }
         else
         {
-            if(value > p -> getData())
+            if(asset -> getId() > (p -> getAsset() -> getId()))
             {
                 // Starts right subtree method.
-                Insert(value, p -> getRight(), valueAux);
+                Insert(asset, p -> getRight(), valueAux);
                 p -> setRight(root);
                 if(0 < *valueAux)
                 {
@@ -205,17 +201,17 @@ void Tree::Insert(int value, Node* p, int* valueAux) // data to insert, Node to 
     else
     {
         // Inserts new node updating valueAux value and setting that the tree has grown up.
-        aux2 = new Node();
-        aux2 -> setData(value);
+        aux2 = new TreeNode();
+        aux2 -> setAsset(asset);
         aux2 -> setFE(0);
         *valueAux = 1;
         root = aux2;
     }
 }
 
-Node* Tree::LRestructure(Node *p, int *auxValue) // Restructure left when right side got diminished
+TreeNode* Tree::LRestructure(TreeNode *p, int *auxValue) // Restructure left when right side got diminished
 {
-    Node* aux;
+    TreeNode* aux;
     if(*auxValue > 0)
     {
        switch(p -> getFE())
@@ -258,9 +254,9 @@ Node* Tree::LRestructure(Node *p, int *auxValue) // Restructure left when right 
     return p;
 }
 
-Node* Tree::RRestructure(Node *p, int *auxValue) // Restructure tree when right side got diminished
+TreeNode* Tree::RRestructure(TreeNode *p, int *auxValue) // Restructure tree when right side got diminished
 {
-    Node* aux;
+    TreeNode* aux;
     if(*auxValue > 0)
     {
        switch(p -> getFE())
@@ -303,7 +299,7 @@ Node* Tree::RRestructure(Node *p, int *auxValue) // Restructure tree when right 
     return p;
 }
 
-void Tree::Susbstitute(Node* p, Node *aux, int *auxValue)
+void Tree::Susbstitute(TreeNode* p, TreeNode *aux, int *auxValue)
 { // Substitutes the deleted value for the rightmost value from the left subtree.
     if(p -> getRight() != NULL)
     {
@@ -327,13 +323,13 @@ void Tree::Susbstitute(Node* p, Node *aux, int *auxValue)
     aux -> setLeft(p);
 }
 
-void Tree::Remove(Node *p, Node *pAnt, int *auxValue, int value)
+void Tree::Remove(TreeNode *p, TreeNode *pAnt, int *auxValue, std::string value)
 {
-    Node* aux = nullptr;
+    TreeNode* aux = nullptr;
     int top = 0;
     if(p != NULL)
     {
-        if(value < p -> getData())
+        if(value < (p -> getAsset() -> getId()))
         {
             if(*auxValue > 0)
             {
@@ -370,7 +366,7 @@ void Tree::Remove(Node *p, Node *pAnt, int *auxValue, int value)
     
         else
         {
-            if(value > p -> getData())
+            if(value > (p -> getAsset() -> getId()))
             {
                 if(*auxValue < 0)
                 {
@@ -489,3 +485,52 @@ void Tree::Remove(Node *p, Node *pAnt, int *auxValue, int value)
     }
 }
 
+void Tree::graphAVL()
+{
+    ofstream file;
+    file.open("avl.dot", ios::out);
+    str = "digraph g{ ";
+    str += "node [fontname=";
+    str+="\"Arial\"";
+    str+="];";
+    Inorder(getRoot());
+    str += "}";
+    file << str << endl;
+    file.close();
+    system("dot -Tpng avl.dot -o avl.png");
+    system("avl.png");
+
+
+    
+}
+
+void Tree::Inorder(TreeNode* node)
+{
+    if(node != NULL)
+    {
+        Inorder(node -> left);
+        str += (node -> getAsset() -> getName()) + "[label=" + (node -> getAsset() -> getName()) + "];";
+
+        if(node -> getLeft()!=NULL)
+        {
+            str+= (node -> getAsset() -> getName())+ "->{" +(node->getLeft()->getAsset() -> getName())+"};";
+
+        }
+        if(node -> getRight()!=NULL)
+        {
+            str+= (node -> getAsset() -> getName()) + "->{" +(node->getRight()->getAsset() -> getName())+"};";
+
+        }
+        Inorder(node -> right);
+    }
+}
+
+void Tree::Preorder(TreeNode *node)
+{
+    if(node != NULL)
+    {
+        std::cout <<">> ******* ID: " << node -> getAsset() -> getIdNum() << " ; Nombre: " << node -> getAsset() -> getName() << std::endl;
+        Preorder(node -> left);
+        Preorder(node -> right);
+    }
+}

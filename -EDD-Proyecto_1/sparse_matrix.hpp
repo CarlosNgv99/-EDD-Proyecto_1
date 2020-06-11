@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
+#include "avl.hpp"
 class Node;
 class Matrix;
 
@@ -25,7 +26,6 @@ private:
     Node* down;
     Node* back;
     Node* front;
-
 public:
     bool linkR;
     bool linkL;

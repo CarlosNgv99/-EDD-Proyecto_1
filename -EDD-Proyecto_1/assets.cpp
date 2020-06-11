@@ -9,16 +9,27 @@
 #include "assets.hpp"
 #include <string>
 
-Asset::Asset(int id, std::string name, std::string description)
+Asset::Asset(int id_num, std::string id, std::string name, std::string description)
 {
+    this -> id_num = id_num;
     this -> id = id;
     this -> name = name;
     this -> description = description;
 }
 
-int Asset::getId()
+std::string Asset::getId()
 {
     return id;
+}
+
+int Asset::getIdNum()
+{
+    return id_num;
+}
+
+void Asset::setIdNum(int value)
+{
+    id_num = value;
 }
 
 std::string Asset::getName()
@@ -31,7 +42,7 @@ std::string Asset::getDescription()
     return description;
 }
 
-void Asset::setId(int id)
+void Asset::setId(std::string id)
 {
     this -> id = id;
 }

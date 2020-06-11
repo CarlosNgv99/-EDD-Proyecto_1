@@ -11,34 +11,34 @@
 
 #include <stdio.h>
 #include <string>
-
+#include "avl.hpp"
 class User
 {
 private:
-    std::string id;
     std::string user;
     std::string password;
     std::string department;
     std::string company;
+    Tree* avlTree;
 public:
-    User(std::string id, std::string user, std::string password, std::string department, std::string company)
+    User(std::string user, std::string password, std::string department, std::string company, Tree* newTree)
     {
-        this -> id = id;
         this -> user = user;
         this -> password = password;
         this -> department = department;
         this -> company = company;
+        this -> avlTree = newTree;
     };
-    std::string getId(){return id;};
     std::string getUser(){return user;};
     std::string getPassword(){return password;};
     std::string getDepartment(){return department;};
     std::string getCompany(){return company;};
-    void setId(std::string value){id = value;};
+    Tree* getAVLTree(){return avlTree;};
     void setUser(std::string value){user = value;};
     void setPassword(std::string value){password = value;};
     void setDepartment(std::string value){department = value;};
     void setCompany(std::string value){company = value;};
+    
 };
 
 #endif /* user_hpp */

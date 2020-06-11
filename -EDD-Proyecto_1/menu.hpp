@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <string>
+#include "sparse_matrix.hpp"
 class Menu{
 public:
     Menu(){};
@@ -20,13 +21,13 @@ public:
     void newUser();
     void signInAdmin();
     void adminMenu();
-    void userMenu(std::string);
-    void addAsset(std::string);
-    void removeAsset(std::string);
-    void modifyAsset(std::string);
-    void rentAsset(std::string);
-    void assetsRented(std::string);
-    void myAssets(std::string);
+    void userMenu(Node*);
+    void addAsset(Node*);
+    void removeAsset(Node*);
+    void modifyAsset(Node*);
+    void rentAsset(Node*);
+    void assetsRented(Node*);
+    void myAssets(Node*);
 };
 
 #endif /* menu_hpp */

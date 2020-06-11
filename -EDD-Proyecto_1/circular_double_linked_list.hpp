@@ -14,15 +14,15 @@
 
 class List;
 
-class Node
+class ListNode
 {
 private:
-    Node* prev;
-    Node* next;
+    ListNode* prev;
+    ListNode* next;
     Transaction* transaction;
 
 public:
-    Node();
+    ListNode();
     friend class List;
     Transaction* getTransaction(){return transaction;};
     void setTransaction(Transaction* value){transaction = value;};
@@ -31,8 +31,8 @@ public:
 class List
 {
 private:
-    Node* first;
-    Node* last;
+    ListNode* first;
+    ListNode* last;
     int size;
 public:
     List();
@@ -43,7 +43,7 @@ public:
     void Remove(Transaction*);
     void RemoveFirst();
     void RemoveLast();
-    Node* Search(Transaction*);
+    ListNode* Search(Transaction*);
     void Display();
     void graph();
     

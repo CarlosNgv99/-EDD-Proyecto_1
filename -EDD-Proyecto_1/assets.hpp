@@ -14,15 +14,18 @@
 class Asset
 {
 private:
-    int id;
+    std::string id;
+    int id_num;
     std::string name;
     std::string description;
 public:
-    Asset(int id, std::string name, std::string description);
-    int getId();
+    Asset(int id_num,std::string id, std::string name, std::string description);
+    std::string getId();
+    int getIdNum();
+    void setIdNum(int);
     std::string getDescription();
     std::string getName();
-    void setId(int id);
+    void setId(std::string id);
     void setName(std::string name);
     void setDescription(std::string description);
 };

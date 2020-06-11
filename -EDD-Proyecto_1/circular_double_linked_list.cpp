@@ -20,7 +20,7 @@ List::List()
     size = 0;
 }
 
-Node::Node()
+ListNode::ListNode()
 {
     prev = NULL;
     next = NULL;
@@ -29,7 +29,7 @@ Node::Node()
 
 void List::InsertFirst(Transaction* value)
 {
-    Node* p = new Node();
+    ListNode* p = new ListNode();
     p -> setTransaction(value);
     if(first == NULL)
     {
@@ -59,7 +59,7 @@ void List::Display()
     }
     else
     {
-        Node* p;
+        ListNode* p;
         p = first;
         for(int i = 0; i < size; i++)
         {
@@ -71,7 +71,7 @@ void List::Display()
 
 void List::InsertLast(Transaction* value)
 {
-    Node* p = new Node();
+    ListNode* p = new ListNode();
     p -> setTransaction(value);
     if(first == NULL)
     {
@@ -104,7 +104,7 @@ void List::Insert(Transaction* value)
 
 void List::RemoveFirst()
 {
-    Node* p;
+    ListNode* p;
     if(first == NULL)
     {
         cout << ">> No hay ninguna transacción." << endl;
@@ -122,7 +122,7 @@ void List::RemoveFirst()
 
 void List::RemoveLast()
 {
-    Node* p;
+    ListNode* p;
     if(first == NULL)
     {
         cout << "List is empty" << endl;
@@ -145,7 +145,7 @@ void List::RemoveLast()
         
 }
 
-Node* List::Search(Transaction* pos)
+ListNode* List::Search(Transaction* pos)
 {
     if(first == NULL)
     {
@@ -154,7 +154,7 @@ Node* List::Search(Transaction* pos)
     }
     else
     {
-        Node* p = first;
+        ListNode* p = first;
         while(p -> next != last)
         {
             if(p -> getTransaction() == pos)
@@ -171,7 +171,7 @@ Node* List::Search(Transaction* pos)
 
 void List::Remove(Transaction* value)
 {
-    Node* p = Search(value);
+    ListNode* p = Search(value);
     p -> next -> prev = p -> prev;
     p -> prev -> next = p -> next;
     
@@ -188,9 +188,9 @@ void List::Remove(Transaction* value)
 
 void List::InsertM(Transaction* pos, Transaction* value)
 {
-    Node* p = new Node();
+    ListNode* p = new ListNode();
     p -> setTransaction(value);
-    Node* search;
+    ListNode* search;
     search = Search(pos);
     
     p -> prev = search;
