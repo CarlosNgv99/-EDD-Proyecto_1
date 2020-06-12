@@ -76,7 +76,7 @@ void Menu::signIn()
     {
         cout << ">> El usuario ingresado no fue encontrado." << endl;
         cout << ">> Por favor, verifique sus datos..." << endl;
-        sleep(3);
+        sleep(2);
         mainMenu();
     }
     else if((aux -> getUser() ->getUser()).compare(user) == 0 && (aux -> getUser() -> getPassword()).compare(password) == 0 )
@@ -115,7 +115,7 @@ void Menu::signInAdmin()
     {
         cout << ">> Usuario o contraseña incorrecta." << endl;
         cout << ">> Por favor, verifique sus datos..." << endl;
-        sleep(2);
+        sleep(1);
         mainMenu();
     }
 }
@@ -143,13 +143,13 @@ void Menu::newUser()
     if(password == "" || user == "" || department == ""|| company == "")
     {
         cout << "<< Ingrese datos válidos para el registro..." << endl;
-        sleep(2);
+        sleep(1);
         newUser();
     }
     Tree* tree = new Tree();
     User* newUser = new User(user, password, department, company, tree);
     matrix.add(department,company, user, newUser);
-    sleep(2);
+    sleep(1);
     adminMenu();
 }
 
@@ -230,6 +230,8 @@ void Menu::userMenu(Node* user)
             case 3:
                 removeAsset(user);
                 break;
+            case 4:
+                rentAsset(user);
             case 7:
                 mainMenu();
                 break;
@@ -243,6 +245,7 @@ void Menu::addAsset(Node* user)
 {
     system("clear");
     std::string id, asset, description;
+    //char desc[256];
     id = rando.random_string(15);
     int band = 0;
     cout << ">> ********************* "<< user -> getUser() -> getUser() <<" *********************" << endl;
@@ -257,7 +260,7 @@ void Menu::addAsset(Node* user)
     Asset* newAsset = new Asset(id_num, id, asset, description);
     user -> getUser() -> getAVLTree() -> Insert(newAsset, user -> getUser() -> getAVLTree() -> getRoot(), &band);
     id_num++;
-    sleep(2);
+    sleep(1);
     userMenu(user);
 }
 
@@ -268,29 +271,29 @@ void Menu::removeAsset(Node* user)
     system("clear");
     int opcion;
     cout << ">> ********************* "<< user -> getUser() -> getUser() <<" *********************" << endl;
-    cout << ">> **************************** Eliminar Activo *****************************" << endl;
+    cout << ">> ************************* Eliminar Activo **************************" << endl;
     user -> getUser() -> getAVLTree() -> Preorder(user -> getUser() -> getAVLTree() -> getRoot());
     cout << ">> Elija cuál activo eliminar (ID): ";
     cin >> opcion;
-    sleep(2);
+    cout << ">> Eliminando activo..." << endl;
+    sleep(1);
     aux = user -> getUser() -> getAVLTree() -> Preorder2(user -> getUser() -> getAVLTree() -> getRoot(), opcion); // Node found by ID.
     system("clear");
-    cout << ">> ********************* "<< user -> getUser() -> getUser() <<" *********************" << endl;
-    cout << ">> ************************* Activo a Eliminar ***************************" << endl;
+    cout << ">> ******************* "<< user -> getUser() -> getUser() <<" *******************" << endl;
+    cout << ">> *********************** Activo a Eliminar *************************" << endl;
     cout << ">> ****** Nombre: " << aux ->getAsset()->getName() << endl;
     cout << ">> ****** ID: " << aux -> getAsset() -> getIdNum() << endl;
     cout << ">> ****** Descripción " << aux -> getAsset() -> getDescription() << endl;
-    
     user -> getUser() -> getAVLTree() -> Remove(user -> getUser() ->getAVLTree() -> getRoot(), NULL, &band, aux -> getAsset() -> getId());
     cout << ">> Activo eliminado exitosamente. Regresando al menú..." << endl;
-    sleep(2);
+    sleep(1);
     userMenu(user);
 }
 
 void Menu::modifyAsset(Node *user)
 {
     TreeNode* nodeFound;
-    std::string newDescription;
+    std::string newDescription, newName;
     system("clear");
     int opcion;
     cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
@@ -306,19 +309,25 @@ void Menu::modifyAsset(Node *user)
     cout << ">> ****** Nombre: " << nodeFound ->getAsset()->getName() << endl;
     cout << ">> ****** ID: " << nodeFound -> getAsset() -> getIdNum() << endl;
     cout << ">> ****** Descripción " << nodeFound -> getAsset() -> getDescription() << endl;
+    
+    cout << ">> Ingrese el nuevo nombre del activo: " << endl;
+    cout << ">> ";
+    cin >> newName;
     cout << ">> Ingrese la nueva descripción del activo: " << endl;
     cout << ">> ";
     cin >> newDescription;
+    nodeFound -> getAsset() -> setName(newName);
     nodeFound -> getAsset() -> setDescription(newDescription);
     cout << ">> Guardando cambios..." << endl;
     sleep(2);
+    
     system("clear");
     cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
     cout << ">> ***************************** Activo a Modificado ******************************" << endl;
     cout << ">> ****** Nombre: " << nodeFound ->getAsset()->getName() << endl;
     cout << ">> ****** ID: " << nodeFound -> getAsset() -> getIdNum() << endl;
     cout << ">> ****** Descripción: " << nodeFound -> getAsset() -> getDescription() << endl;
-    sleep(4);
+    sleep(2);
     userMenu(user);
 }
 
@@ -371,7 +380,7 @@ void Menu::departmentAssetsReport()
     cout << ">> ";
     cin >> department;
     matrix.SearchXAssets(department);
-    sleep(5);
+    sleep(3);
     adminMenu();
 }
 
@@ -385,6 +394,21 @@ void Menu::companyAssetsReport()
     cout << ">> ";
     cin >> company;
     matrix.SearchYAssets(company);
-    sleep(5);
+    sleep(3);
     adminMenu();
+}
+
+void Menu::rentAsset(Node* user)
+{
+    system("clear");
+    int option;
+    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
+    cout << ">> ********************** Renta de Activos (Catálogo) ************************" << endl;
+    matrix.searchAllAssets(user -> getUser() -> getUser());
+    cout << ">> Ingrese cuál activo rentar (ID): " << endl;
+    cout << ">> ";
+    cin >> option;
+    cout <<">> Activo rentado con exito..." << endl;
+    sleep(1);
+    userMenu(user);
 }

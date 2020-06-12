@@ -18,7 +18,9 @@ private:
     int id_num;
     std::string name;
     std::string description;
+    
 public:
+    bool rented;
     Asset(int id_num,std::string id, std::string name, std::string description);
     std::string getId();
     int getIdNum();

@@ -15,6 +15,7 @@ Asset::Asset(int id_num, std::string id, std::string name, std::string descripti
     this -> id = id;
     this -> name = name;
     this -> description = description;
+    this -> rented = false; // Not rented yet.
 }
 
 std::string Asset::getId()

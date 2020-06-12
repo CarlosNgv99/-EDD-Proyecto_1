@@ -20,15 +20,22 @@ private:
     User* user;
     std::string date;
     std::string time_rented;
+    std::string department;
+    std::string company;
+
 public:
-    Transaction(std::string id, std::string asset_id, User* user, std::string date, std::string time_rented)
+    Transaction(std::string id, std::string asset_id, User* user, std::string date, std::string time_rented, std::string department, std::string company)
     {
         this -> id = id;
         this -> asste_id = asset_id;
         this -> user = user;
         this -> date = date;
         this -> time_rented = time_rented;
+        this -> department = department;
+        this -> company = company;
     }
+    std::string getDepartment(){return department;};
+    std::string getCompany(){return company;};
     std::string getId(){return id;};
     std::string getRentedid(){return asste_id;};
     User* getUser(){return user;};

@@ -532,7 +532,7 @@ void Tree::Preorder(TreeNode *node)
 {
     if(node != NULL)
     {
-        std::cout <<">> ******* ID: " << node -> getAsset() -> getIdNum() << " ; Nombre: " << node -> getAsset() -> getName() << "; Descrición: " << node ->getAsset() -> getDescription() << std::endl;
+        std::cout <<">> ******* ID: " << node -> getAsset() -> getIdNum() << " ; Nombre: " << node -> getAsset() -> getName() << "; Descripción: " << node ->getAsset() -> getDescription() << std::endl;
         Preorder(node -> left);
         Preorder(node -> right);
     }
