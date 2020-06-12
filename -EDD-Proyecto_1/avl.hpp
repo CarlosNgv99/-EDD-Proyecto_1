@@ -42,7 +42,7 @@ class Tree
 private:
     TreeNode* root;
 public:
-    Tree(){root = NULL;};
+    Tree(){root = nullptr;};
     void setRoot(TreeNode* value){root = value;};
     TreeNode* LLRotation(TreeNode* p, TreeNode* aux);
     TreeNode* RRRotation(TreeNode* p, TreeNode* aux);
@@ -54,7 +54,6 @@ public:
     void Inorder(TreeNode* node);
     void Preorder(TreeNode* node);
     TreeNode* Preorder2(TreeNode* node, int);
-
     void Susbstitute(TreeNode* p, TreeNode* aux, int* auxValue);
     void Insert(Asset* asset, TreeNode* p, int* band);
     void Remove(TreeNode* p, TreeNode* pAnt, int* axuValue, std::string value);

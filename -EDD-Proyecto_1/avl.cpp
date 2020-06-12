@@ -14,7 +14,7 @@ using namespace std;
 
 std::string str;
 
-
+TreeNode* auxSearch = nullptr;
 TreeNode* Tree::LLRotation(TreeNode* p, TreeNode* aux)
 {
     p -> setLeft(aux -> getRight());
@@ -532,7 +532,7 @@ void Tree::Preorder(TreeNode *node)
 {
     if(node != NULL)
     {
-        std::cout <<">> ******* ID: " << node -> getAsset() -> getIdNum() << " ; Nombre: " << node -> getAsset() -> getName() << std::endl;
+        std::cout <<">> ******* ID: " << node -> getAsset() -> getIdNum() << " ; Nombre: " << node -> getAsset() -> getName() << "; Descrición: " << node ->getAsset() -> getDescription() << std::endl;
         Preorder(node -> left);
         Preorder(node -> right);
     }
@@ -540,14 +540,15 @@ void Tree::Preorder(TreeNode *node)
 
 TreeNode* Tree::Preorder2(TreeNode *node, int id_num)
 {
+    
     if(node != NULL)
     {
         if(node -> getAsset() -> getIdNum() == id_num)
         {
-            return node;
+            auxSearch = node;
         }
         Preorder2(node -> left,id_num);
         Preorder2(node -> right,id_num);
     }
-    return nullptr;
+    return auxSearch;
 }

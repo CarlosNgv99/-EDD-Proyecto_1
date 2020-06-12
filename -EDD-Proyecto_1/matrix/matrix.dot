@@ -1,0 +1,39 @@
+digraph g{
+rankdir = TB;
+node [shape=rectangle, height=0.5, width=0.5];
+graph[ nodesep = 0.5];
+node0 [label="Header"];
+Guatemala[label="Guatemala"]
+Jalapa[label="Jalapa"]
+Escuintla[label="Escuintla"]
+node0->Guatemala[dir=both];
+Guatemala->Jalapa[dir=both];
+Jalapa->Escuintla[dir=both];
+Apple[label="Apple"]
+Samsung[label="Samsung"]
+Walmart[label="Walmart"]
+node0->Apple[dir=both];
+Apple->Samsung[dir=both];
+Samsung->Walmart[dir=both];
+carlosngv[label="carlosngv"]
+roberto->carlosngv[constraint=false, dir=both];
+{rank=same; roberto; carlosngv;}
+Apple->carlosngv[constraint=false, dir=both];
+{rank=same; Apple; carlosngv;}
+Guatemala->carlosngv[dir=both]
+juanito[label="juanito"]
+Walmart->juanito[constraint=false, dir=both];
+{rank=same; Walmart; juanito;}
+carlosngv->juanito[dir=both]
+juanito[label="juanito"]
+luis123[label="luis123"]
+Samsung->luis123[constraint=false, dir=both];
+{rank=same; Samsung; luis123;}
+Jalapa->luis123[dir=both]
+luis123[label="luis123"]
+luis123[label="luis123"]
+roberto[label="roberto"]
+Escuintla->roberto[dir=both]
+roberto[label="roberto"]
+roberto[label="roberto"]
+{rank=same; node0; Guatemala; Jalapa; Escuintla;}}

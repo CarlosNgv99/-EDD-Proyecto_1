@@ -22,7 +22,7 @@
 using namespace std;
 Matrix matrix;
 Random rando;
-int id_num = 0;
+int id_num = 1;
 void Menu::mainMenu()
 {
     system("clear");
@@ -208,7 +208,7 @@ void Menu::userMenu(Node* user)
 {
     system("clear");
     int option;
-    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
+    cout << ">> ********************* "<< user -> getUser() -> getUser() <<" *********************" << endl;
     cout << ">> ******* 1. Agregar Activo" << endl;
     cout << ">> ******* 2. Modificar Activo" << endl;
     cout << ">> ******* 3. Eliminar Activo" << endl;
@@ -223,12 +223,9 @@ void Menu::userMenu(Node* user)
         {
             case 1:
                 addAsset(user);
-
                 break;
             case 2:
-                
-                sleep(1);
-                userMenu(user);
+                modifyAsset(user);
                 break;
             case 3:
                 removeAsset(user);
@@ -248,8 +245,8 @@ void Menu::addAsset(Node* user)
     std::string id, asset, description;
     id = rando.random_string(15);
     int band = 0;
-    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
-    cout << ">> **************************** Agregar Activo ****************************" << endl;
+    cout << ">> ********************* "<< user -> getUser() -> getUser() <<" *********************" << endl;
+    cout << ">> ************************* Agregar Activo *************************" << endl;
     cout << ">> ******* Nombre del activo: " << endl;
     cout << ">> ";
     cin >> asset;
@@ -270,16 +267,16 @@ void Menu::removeAsset(Node* user)
     int band = 0;
     system("clear");
     int opcion;
-    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
-    cout << ">> ********************************* Eliminar Activo **********************************" << endl;
+    cout << ">> ********************* "<< user -> getUser() -> getUser() <<" *********************" << endl;
+    cout << ">> **************************** Eliminar Activo *****************************" << endl;
     user -> getUser() -> getAVLTree() -> Preorder(user -> getUser() -> getAVLTree() -> getRoot());
     cout << ">> Elija cuál activo eliminar (ID): ";
     cin >> opcion;
     sleep(2);
-    aux = user -> getUser() -> getAVLTree() -> Preorder2(user -> getUser() -> getAVLTree() -> getRoot(), opcion);
+    aux = user -> getUser() -> getAVLTree() -> Preorder2(user -> getUser() -> getAVLTree() -> getRoot(), opcion); // Node found by ID.
     system("clear");
-    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
-    cout << ">> ********************************* Activo a Eliminar **********************************" << endl;
+    cout << ">> ********************* "<< user -> getUser() -> getUser() <<" *********************" << endl;
+    cout << ">> ************************* Activo a Eliminar ***************************" << endl;
     cout << ">> ****** Nombre: " << aux ->getAsset()->getName() << endl;
     cout << ">> ****** ID: " << aux -> getAsset() -> getIdNum() << endl;
     cout << ">> ****** Descripción " << aux -> getAsset() -> getDescription() << endl;
@@ -287,6 +284,41 @@ void Menu::removeAsset(Node* user)
     user -> getUser() -> getAVLTree() -> Remove(user -> getUser() ->getAVLTree() -> getRoot(), NULL, &band, aux -> getAsset() -> getId());
     cout << ">> Activo eliminado exitosamente. Regresando al menú..." << endl;
     sleep(2);
+    userMenu(user);
+}
+
+void Menu::modifyAsset(Node *user)
+{
+    TreeNode* nodeFound;
+    std::string newDescription;
+    system("clear");
+    int opcion;
+    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
+    cout << ">> ****************************** Modificar Activo ********************************" << endl;
+    user -> getUser() -> getAVLTree() -> Preorder(user -> getUser() -> getAVLTree() -> getRoot());
+    cout << ">> Elija cuál activo modificar (ID): ";
+    cin >> opcion;
+    sleep(2);
+    nodeFound = user -> getUser() -> getAVLTree() -> Preorder2(user -> getUser() -> getAVLTree() -> getRoot(), opcion); // Node found by ID.
+    system("clear");
+    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
+    cout << ">> ***************************** Activo a Modificar *******************************" << endl;
+    cout << ">> ****** Nombre: " << nodeFound ->getAsset()->getName() << endl;
+    cout << ">> ****** ID: " << nodeFound -> getAsset() -> getIdNum() << endl;
+    cout << ">> ****** Descripción " << nodeFound -> getAsset() -> getDescription() << endl;
+    cout << ">> Ingrese la nueva descripción del activo: " << endl;
+    cout << ">> ";
+    cin >> newDescription;
+    nodeFound -> getAsset() -> setDescription(newDescription);
+    cout << ">> Guardando cambios..." << endl;
+    sleep(2);
+    system("clear");
+    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
+    cout << ">> ***************************** Activo a Modificado ******************************" << endl;
+    cout << ">> ****** Nombre: " << nodeFound ->getAsset()->getName() << endl;
+    cout << ">> ****** ID: " << nodeFound -> getAsset() -> getIdNum() << endl;
+    cout << ">> ****** Descripción: " << nodeFound -> getAsset() -> getDescription() << endl;
+    sleep(4);
     userMenu(user);
 }
 
