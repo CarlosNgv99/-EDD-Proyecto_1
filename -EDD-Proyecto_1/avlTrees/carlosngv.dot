@@ -1,1 +1,0 @@
-digraph g{ node [fontname="Arial"];IPad[label="Activo: IPad\nID: b7pgsf19t4xfi87"];Earpods[label="Activo: Earpods\nID: p2wjq9j1rljk10t"];Earpods->IPad;Earpods->IPhone;Macbook[label="Activo: Macbook\nID: tkv6dhtgssec8uv"];IPhone[label="Activo: IPhone\nID: vp52m8oqz10hoqr"];IPhone->Macbook;IPhone->Mac;Mac[label="Activo: Mac\nID: yy98h190opmp7px"];}

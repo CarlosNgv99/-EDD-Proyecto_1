@@ -52,7 +52,7 @@ public:
     void RemoveLast();
     void SearchByName(std::string);
     ListNode* Search(Transaction*);
-
+    ListNode* SearchUser(std::string,int);
     void Display();
     void graphAsc();
     void graphDesc();

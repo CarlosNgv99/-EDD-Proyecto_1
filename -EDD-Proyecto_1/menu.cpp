@@ -415,7 +415,7 @@ void Menu::userAssetsReport()
         sleep(2);
         system("clear");
         cout << ">> ************************ Administrador ************************" << endl;
-        cout << ">> **************** Reporte Activos"<< aux -> getUser() -> getUser() <<"****************" << endl;
+        cout << ">> ************* Reporte Activos de "<< aux -> getUser() -> getUser() <<"*************" << endl;
         aux -> getUser() -> getAVLTree() -> Preorder(aux -> getUser() -> getAVLTree() -> getRoot());
         cout << ">> Se ha generado la grafica de los activos del usuario. Redirigiendolo al menu..." << endl;
         sleep(4);
@@ -462,6 +462,7 @@ void Menu::rentAsset(Node* user)
 {
     Node* aux = nullptr;
     TreeNode* root = nullptr, *assetFound = nullptr;
+    Asset* assetAux;
     system("clear");
     int option,id_option;
     std::string username,asset_id,id,time_rented,department,company,date,name;
@@ -500,8 +501,8 @@ void Menu::rentAsset(Node* user)
                 id = rando.random_string(15);
                 asset_id = assetFound -> getAsset() -> getId();
                 name = assetFound -> getAsset() ->getName();
-                
-                Transaction* transaction = new Transaction(id,asset_id,user -> getUser(),date,time_rented,department,company,name );
+                assetAux = assetFound -> getAsset();
+                Transaction* transaction = new Transaction(id,asset_id,user -> getUser(),date,time_rented,department,company,name,id_option, assetAux);
                 transactionList.InsertSorted(transaction);
                 
                 
@@ -571,21 +572,72 @@ void Menu::sortedTransactionsReport()
 void Menu::myRentedAssets(Node* user)
 {
     TreeNode* root;
+    int option;
     system("clear");
     cout << ">> ******************** "<< user -> getUser() -> getUser() <<" ********************" << endl;
     cout << ">> ****************** Mis Activos Rentados ********************" << endl;
     root = user -> getUser() -> getAVLTree() -> getRoot();
     user -> getUser() -> getAVLTree() -> MyRentedAssets(root);
-    sleep(3);
-    userMenu(user);
+    cout << ">> Ingrese 1 para regresar" << endl;
+    cout << ">> ";
+    cin >> option;
+    if(option == 1)
+    {
+        userMenu(user);
+    }
+    else{
+        userMenu(user);
+    }
+    
 }
 
 void Menu::rentedAssets(Node * user)
 {
+    int option, id_option;
+    ListNode* aux;
+    Asset* assetFound;
     system("clear");
-    cout << ">> ******************** "<< user -> getUser() -> getUser() <<" ********************" << endl;
+    cout << ">> ****************** "<< user -> getUser() -> getUser() <<" ******************" << endl;
     cout << ">> ****************** Activos Rentados ********************" << endl;
     transactionList.SearchByName(user -> getUser() -> getUser());
-    sleep(4);
-    userMenu(user);
+    cout << ">> ****** 1. Devolver activo" << endl;
+    cout << ">> ****** 2. Regresar" << endl;
+    cout << ">> ";
+    cin >> option;
+    do{
+        switch(option)
+        {
+            case 1:
+                cout << ">> Ingrese el ID del activo que desea retornar: " << endl;
+                cout << ">> ";
+                cin >> id_option;
+                aux = transactionList.SearchUser(user -> getUser() -> getUser(),id_option);
+                if(aux!=NULL){
+                    aux -> getTransaction() -> getAsset() -> rented = false;
+                    assetFound = aux -> getTransaction() -> getAsset();
+                    cout << ">> Validando devolución..." << endl;
+                    sleep(2);
+                    system("clear");
+                    cout << ">> ****************** "<< user -> getUser() -> getUser() <<" ******************" << endl;
+                    cout << ">> ****************** Activo Devuelto ********************" << endl;
+                    cout << ">> ID: " << assetFound -> getIdNum() << " ; Nombre: " << assetFound ->getName() << " ; Descripción: " << assetFound -> getDescription() << endl;
+                    cout << ">> Refrescando activos rentados..." << endl;
+                    sleep(1);
+                    rentedAssets(user);
+                }
+                else{
+                    cout << ">> Activo no encontrado. Inténtelo de nuevo." << endl;
+                    sleep(1);
+                    rentedAssets(user);
+                }
+                break;
+            case 2:
+                userMenu(user);
+                break;
+            default:
+                cout << ">> Eliga una de las opciones presentadas." << endl;
+                userMenu(user);
+                break;
+        }
+    }while(option <= 0 || option > 3);
 }

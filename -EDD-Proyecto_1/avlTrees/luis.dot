@@ -1,1 +1,0 @@
-digraph g{ node [fontname="Arial"];TvHD[label="Activo: TvHD\nID: 016s705ya6ypmsj"];Microondas[label="Activo: Microondas\nID: cz5yoqgx20l9bwt"];Microondas->TvHD;Fridge[label="Activo: Fridge\nID: mn05tfy9dtnx8r6"];Fridge->Microondas;Fridge->PC;PC[label="Activo: PC\nID: q19uc5b5f3ey788"];}

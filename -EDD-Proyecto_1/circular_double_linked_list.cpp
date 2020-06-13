@@ -183,15 +183,36 @@ void List::SearchByName(std::string user)
     ListNode* p = first;
     while(p -> getNext() != first)
     {
-        if(p -> getTransaction() -> getUser() -> getUser() == user)
+        if(p -> getTransaction() -> getUser() -> getUser() == user && p -> getTransaction() -> getAsset() -> rented == true)
         {
-            cout << ">> Transacción con ID: " << p-> getTransaction() -> getId() <<" ; Activo: "<< p -> getTransaction() -> getName() << "; Dias rentado: "<< p -> getTransaction() -> getTimeRented() << endl;
+            cout << ">> Transacción con ID: " << p-> getTransaction() -> getId() <<" ; ID Activo: "<< p -> getTransaction() -> getIdNum()<<" ; Activo: "<< p -> getTransaction() -> getName() << "; Dias rentado: "<< p -> getTransaction() -> getTimeRented() << endl;
         }
         p = p -> getNext();
     }
-    if(p -> getTransaction() -> getUser() -> getUser() == user)
+    if(p -> getTransaction() -> getUser() -> getUser() == user && p -> getTransaction() -> getAsset() -> rented == true)
     {
-        cout << ">> Transacción con ID: " << p-> getTransaction() -> getId() <<" ; Activo: "<< p -> getTransaction() -> getName() << "; Dias rentado: "<< p -> getTransaction() -> getTimeRented() << endl;
+        cout << ">> Transacción con ID: " << p-> getTransaction() -> getId() <<" ; ID Activo: "<< p -> getTransaction() -> getIdNum()<<" ; Activo: "<< p -> getTransaction() -> getName() << "; Dias rentado: "<< p -> getTransaction() -> getTimeRented() << endl;
+    }
+}
+
+ListNode* List::SearchUser(std::string user,int id_num)
+{
+    ListNode* p = first;
+    while(p -> getNext() != first)
+    {
+        if(p -> getTransaction() -> getUser() -> getUser() == user && p -> getTransaction() -> getAsset() -> getIdNum() == id_num)
+        {
+            return p;
+        }
+        p = p -> getNext();
+    }
+    if(p -> getTransaction() -> getUser() -> getUser() == user && p -> getTransaction() -> getAsset() -> getIdNum() == id_num)
+    {
+        return p;
+    }
+    else
+    {
+        return nullptr;
     }
 }
 

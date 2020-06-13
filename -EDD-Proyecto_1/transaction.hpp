@@ -12,9 +12,12 @@
 #include <stdio.h>
 #include <string>
 #include "user.hpp"
+#include "assets.hpp"
 class Transaction
 {
 private:
+    Asset* asset;
+    int id_num;
     std::string id;
     std::string asste_id;
     User* user;
@@ -26,8 +29,10 @@ private:
 
 
 public:
-    Transaction(std::string id, std::string asset_id, User* user, std::string date, std::string time_rented, std::string department, std::string company, std::string name)
+    Transaction(std::string id, std::string asset_id, User* user, std::string date, std::string time_rented, std::string department, std::string company, std::string name,int id_num, Asset* asset)
     {
+        this -> asset = asset;
+        this -> id_num = id_num;
         this -> name = name;
         this -> id = id;
         this -> asste_id = asset_id;
@@ -37,6 +42,8 @@ public:
         this -> department = department;
         this -> company = company;
     }
+    Asset* getAsset(){return asset;};
+    int getIdNum(){return id_num;};
     std::string getDepartment(){return department;};
     std::string getCompany(){return company;};
     std::string getId(){return id;};

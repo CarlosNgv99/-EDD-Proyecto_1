@@ -1,0 +1,1 @@
+digraph g{ node [fontname="Arial"];MIcroondas[label="Activo: MIcroondas\nID: cz5yoqgx20l9bwt"];Fridge[label="Activo: Fridge\nID: mn05tfy9dtnx8r6"];Fridge->MIcroondas;Fridge->Stereo;Stereo[label="Activo: Stereo\nID: q19uc5b5f3ey788"];}

@@ -110,8 +110,8 @@
             filePath = "-EDD-Proyecto_1/menu.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "588"
-            endingLineNumber = "588"
+            startingLineNumber = "602"
+            endingLineNumber = "602"
             landmarkName = "Menu::rentedAssets(user)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "-EDD-Proyecto_1/menu.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "578"
-            endingLineNumber = "578"
+            startingLineNumber = "580"
+            endingLineNumber = "580"
             landmarkName = "Menu::myRentedAssets(user)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +142,24 @@
             filePath = "-EDD-Proyecto_1/menu.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "587"
-            endingLineNumber = "587"
+            startingLineNumber = "601"
+            endingLineNumber = "601"
+            landmarkName = "Menu::rentedAssets(user)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "556B4E19-DE1A-46E5-81B9-078C7908B7EB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "-EDD-Proyecto_1/menu.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "616"
+            endingLineNumber = "616"
             landmarkName = "Menu::rentedAssets(user)"
             landmarkType = "7">
          </BreakpointContent>
