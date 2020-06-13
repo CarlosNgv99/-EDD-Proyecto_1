@@ -1,0 +1,1 @@
+digraph g{ node [fontname="Arial"];Microondas[label=Microondas/nID: 016s705ya6ypmsj];Fridge[label=Fridge/nID: q19uc5b5f3ey788];Fridge->{Microondas/nID: q19uc5b5f3ey788];}

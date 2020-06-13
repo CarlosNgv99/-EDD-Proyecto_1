@@ -26,6 +26,12 @@ public:
     friend class List;
     Transaction* getTransaction(){return transaction;};
     void setTransaction(Transaction* value){transaction = value;};
+    ListNode* getPrev(){return prev;};
+    ListNode* getNext(){return next;};
+    void setPrev(ListNode*prev){this -> prev = prev;};
+    void setNext(ListNode*next){this -> next = next;};
+
+
 };
 
 class List
@@ -36,6 +42,7 @@ private:
     int size;
 public:
     List();
+    void InsertSorted(Transaction*);
     void Insert(Transaction*);
     void InsertFirst(Transaction*);
     void InsertLast(Transaction*);
@@ -45,8 +52,8 @@ public:
     void RemoveLast();
     ListNode* Search(Transaction*);
     void Display();
-    void graph();
-    
+    void graphAsc();
+    void graphDesc();
 };
 
 #endif /* list_hpp */

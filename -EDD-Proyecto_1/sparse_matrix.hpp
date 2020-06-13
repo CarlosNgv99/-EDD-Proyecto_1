@@ -130,6 +130,7 @@ public:
     void SearchXAssets(std::string);
     void SearchYAssets(std::string);
     void searchAllAssets(std::string user);
+    Node* SearchUser(std::string);
     Node* getHeader()
     {
         return header;

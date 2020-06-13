@@ -22,6 +22,7 @@
 using namespace std;
 Matrix matrix;
 Random rando;
+List transactionList;
 int id_num = 1;
 void Menu::mainMenu()
 {
@@ -191,8 +192,14 @@ void Menu::adminMenu()
             case 4:
                 companyAssetsReport();
                 break;
+            case 5:
+                transactionsReport();
+                break;
             case 6:
                 userAssetsReport();
+                break;
+            case 8:
+                sortedTransactionsReport();
                 break;
             case 9:
                 mainMenu();
@@ -249,7 +256,7 @@ void Menu::addAsset(Node* user)
     id = rando.random_string(15);
     int band = 0;
     cout << ">> ********************* "<< user -> getUser() -> getUser() <<" *********************" << endl;
-    cout << ">> ************************* Agregar Activo *************************" << endl;
+    cout << ">> ******************* Agregar Activo *******************" << endl;
     cout << ">> ******* Nombre del activo: " << endl;
     cout << ">> ";
     cin >> asset;
@@ -277,7 +284,7 @@ void Menu::removeAsset(Node* user)
     cin >> opcion;
     cout << ">> Eliminando activo..." << endl;
     sleep(1);
-    aux = user -> getUser() -> getAVLTree() -> Preorder2(user -> getUser() -> getAVLTree() -> getRoot(), opcion); // Node found by ID.
+    aux = user -> getUser() -> getAVLTree() -> searchAssetIdNum(user -> getUser() -> getAVLTree() -> getRoot(), opcion); // Node found by ID.
     system("clear");
     cout << ">> ******************* "<< user -> getUser() -> getUser() <<" *******************" << endl;
     cout << ">> *********************** Activo a Eliminar *************************" << endl;
@@ -302,7 +309,7 @@ void Menu::modifyAsset(Node *user)
     cout << ">> Elija cuál activo modificar (ID): ";
     cin >> opcion;
     sleep(2);
-    nodeFound = user -> getUser() -> getAVLTree() -> Preorder2(user -> getUser() -> getAVLTree() -> getRoot(), opcion); // Node found by ID.
+    nodeFound = user -> getUser() -> getAVLTree() -> searchAssetIdNum(user -> getUser() -> getAVLTree() -> getRoot(), opcion); // Node found by ID.
     system("clear");
     cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
     cout << ">> ***************************** Activo a Modificar *******************************" << endl;
@@ -400,15 +407,91 @@ void Menu::companyAssetsReport()
 
 void Menu::rentAsset(Node* user)
 {
+    Node* aux = nullptr;
+    TreeNode* root = nullptr, *assetFound = nullptr;
     system("clear");
     int option;
-    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
-    cout << ">> ********************** Renta de Activos (Catálogo) ************************" << endl;
-    matrix.searchAllAssets(user -> getUser() -> getUser());
+    std::string username,asset_id,id,time_rented,department,company,date,name;
+    cout << ">> ********************** "<< user -> getUser() -> getUser() <<" **********************" << endl;
+    cout << ">> ******************** Renta de Activos (Catálogo) **********************" << endl;
+    matrix.searchAllAssets(user -> getUser() -> getUser()); // Shows all assets, except from logged user.
+    cout << ">> Ingrese el nombre de usuario del cual desea rentar el activo: " << endl;
+    cout << ">> ";
+    cin >> username;
+    aux = matrix.SearchUser(username); // returns user found by username.
     cout << ">> Ingrese cuál activo rentar (ID): " << endl;
     cout << ">> ";
     cin >> option;
+    cout << ">> Ingresar días por rentar: " << endl;
+    cout << ">> ";
+    cin >> time_rented;
+    date = "12/06/2020";
+    
+    // Getting data for transaction.
+    
+    root = aux -> getUser() -> getAVLTree() -> getRoot(); // root from user's tree.
+    assetFound = aux -> getUser() -> getAVLTree() -> searchAssetIdNum(root, option);
+    assetFound -> getAsset() -> rented = true;
+    company = aux -> getUser() -> getCompany();
+    department = aux -> getUser() -> getDepartment();
+    id = rando.random_string(15);
+    asset_id = assetFound -> getAsset() -> getId();
+    name = assetFound -> getAsset() ->getName();
+    
+    Transaction* transaction = new Transaction(id,asset_id,user -> getUser(),date,time_rented,department,company,name );
+    transactionList.InsertSorted(transaction);
+    
+    
+    
     cout <<">> Activo rentado con exito..." << endl;
     sleep(1);
     userMenu(user);
+    
+}
+
+void Menu::transactionsReport()
+{
+    system("clear");
+    cout << ">> ************************ Administrador ************************" << endl;
+    cout << ">> ***************** Reporte Transacciones *****************" << endl;
+    transactionList.Display();
+    transactionList.graphAsc();
+    cout << ">> Se ha generado el reporte de transacciones... " << endl;
+    sleep(3);
+    adminMenu();
+}
+
+void Menu::sortedTransactionsReport()
+{
+    int option;
+    system("clear");
+    cout << ">> ************************ Administrador ************************" << endl;
+    cout << ">> ***************** Reporte Transacciones *****************" << endl;
+    cout << ">> ******* 1. Orden ascendente" << endl;
+    cout << ">> ******* 2. Orden descendente" << endl;
+    cout << ">> ******* 3. Regresar" << endl;
+
+    cin >> option;
+    do{
+        switch(option)
+        {
+            case 1:
+                cout << ">> Se ha generado el reporte en orden ascendente..." << endl;
+                transactionList.graphAsc();
+                sleep(2);
+                adminMenu();
+                break;
+            case 2:
+                cout << ">> Se ha generado el reporte en orden descendente..." << endl;
+                transactionList.graphDesc();
+                sleep(2);
+                adminMenu();
+                break;
+            case 3:
+                adminMenu();
+                break;
+            default:
+                cout << ">> Eliga una de las opciones presentadas." << endl;
+        }
+    }while(option <= 0 || option > 3);
 }

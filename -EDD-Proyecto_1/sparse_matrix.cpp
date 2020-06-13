@@ -557,8 +557,29 @@ void Matrix::searchAllAssets(std::string user)
                 
             }else{
                 cout << "Activos de usuario: " << aux -> getUser() -> getUser() << endl;
+                
                 aux -> getUser() -> getAVLTree() -> Preorder(aux -> getUser() -> getAVLTree() -> getRoot());
             }
         }
     }
+}
+
+Node* Matrix::SearchUser(std::string username)
+{
+    Node* p = header;
+    Node* aux = nullptr;
+    while(p -> getRight() != NULL)
+    {
+        p = p -> getRight();
+        aux = p;
+        while(aux -> getDown() != NULL)
+        {
+            aux = aux -> getDown();
+            if(aux -> getUser() -> getUser() == username)
+            {
+                return aux;
+            }
+        }
+    }
+    return nullptr;
 }

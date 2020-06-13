@@ -1,0 +1,12 @@
+digraph g{
+rankdir=LR;
+node [shape=record];
+IWatch[label = "{<prev>|IWatch\nID: 016s705ya6ypmsj\nTiempo Rentado: 49 días|<next>}"];
+Fridge[label = "{<prev>|Fridge\nID: 9rgftqfexs2wvzy\nTiempo Rentado: 32 días|<next>}"];
+AppleTv[label = "{<prev>|AppleTv\nID: cz5yoqgx20l9bwt\nTiempo Rentado: 20 días|<next>}"];
+IPhone[label = "{<prev>|IPhone\nID: q19uc5b5f3ey788\nTiempo Rentado: 39 días|<next>}"];
+IWatch:next->Fridge:prev [arrowhead=vee, dir=both, tailclip=false];
+Fridge:next->AppleTv:prev [arrowhead=vee, dir=both, tailclip=false];
+AppleTv:next->IPhone:prev [arrowhead=vee, dir=both, tailclip=false];
+IPhone:next->IWatch:prev [arrowhead=vee, dir=both, tailclip=false];
+}

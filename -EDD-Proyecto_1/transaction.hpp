@@ -22,10 +22,13 @@ private:
     std::string time_rented;
     std::string department;
     std::string company;
+    std::string name;
+
 
 public:
-    Transaction(std::string id, std::string asset_id, User* user, std::string date, std::string time_rented, std::string department, std::string company)
+    Transaction(std::string id, std::string asset_id, User* user, std::string date, std::string time_rented, std::string department, std::string company, std::string name)
     {
+        this -> name = name;
         this -> id = id;
         this -> asste_id = asset_id;
         this -> user = user;
@@ -41,6 +44,8 @@ public:
     User* getUser(){return user;};
     std::string getDate(){return date;};
     std::string getTimeRented(){return time_rented;};
+    std::string getName(){return name;};
+
 };
 
 #endif /* transaction_hpp */

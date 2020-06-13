@@ -512,16 +512,16 @@ void Tree::Inorder(TreeNode* node)
     if(node != NULL)
     {
         Inorder(node -> left);
-        str += (node -> getAsset() -> getName()) + "[label=" + (node -> getAsset() -> getName()) + "];";
+        str += (node -> getAsset() -> getName()) + "[label=" + (node -> getAsset() -> getName()) +"\\nID: "+(node ->getAsset()->getId())+ "];";
 
         if(node -> getLeft()!=NULL)
         {
-            str+= (node -> getAsset() -> getName())+ "->{" +(node->getLeft()->getAsset() -> getName())+"};";
+            str+= (node -> getAsset() -> getName())+ "->{" +(node->getLeft()->getAsset() -> getName())+"\\nID: "+(node ->getAsset()->getId())+ "];";
 
         }
         if(node -> getRight()!=NULL)
         {
-            str+= (node -> getAsset() -> getName()) + "->{" +(node->getRight()->getAsset() -> getName())+"};";
+            str+= (node -> getAsset() -> getName()) + "->{" +(node->getRight()->getAsset() -> getName())+"\\nID: "+(node ->getAsset()->getId())+ "];";
 
         }
         Inorder(node -> right);
@@ -532,13 +532,15 @@ void Tree::Preorder(TreeNode *node)
 {
     if(node != NULL)
     {
-        std::cout <<">> ******* ID: " << node -> getAsset() -> getIdNum() << " ; Nombre: " << node -> getAsset() -> getName() << "; Descripción: " << node ->getAsset() -> getDescription() << std::endl;
+        if(node -> getAsset() -> rented == false){
+           std::cout <<">> ******* ID: " << node -> getAsset() -> getIdNum() << " ; Nombre: " << node -> getAsset() -> getName() << "; Descripción: " << node ->getAsset() -> getDescription() << std::endl;
+        }
         Preorder(node -> left);
         Preorder(node -> right);
     }
 }
 
-TreeNode* Tree::Preorder2(TreeNode *node, int id_num)
+TreeNode* Tree::searchAssetIdNum(TreeNode *node, int id_num)
 {
     
     if(node != NULL)
@@ -547,8 +549,8 @@ TreeNode* Tree::Preorder2(TreeNode *node, int id_num)
         {
             auxSearch = node;
         }
-        Preorder2(node -> left,id_num);
-        Preorder2(node -> right,id_num);
+        searchAssetIdNum(node -> left,id_num);
+        searchAssetIdNum(node -> right,id_num);
     }
     return auxSearch;
 }

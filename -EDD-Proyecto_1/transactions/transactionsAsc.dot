@@ -1,0 +1,14 @@
+digraph g{
+rankdir=LR;
+node [shape=record];
+TabletKindle[label = "{<prev>|TabletKindle\nID: 2ynfcc7qkor7551\nTiempo Rentado: 20 días|<next>}"];
+TelevisorHD[label = "{<prev>|TelevisorHD\nID: 8af3ubpw16r2tqi\nTiempo Rentado: 10 días|<next>}"];
+Macbook[label = "{<prev>|Macbook\nID: 9rgftqfexs2wvzy\nTiempo Rentado: 10 días|<next>}"];
+IWatch[label = "{<prev>|IWatch\nID: aokyyq67isyqr7f\nTiempo Rentado: 10 días|<next>}"];
+Fridge[label = "{<prev>|Usuario: juanito\nActivo: Fridge\nID: d18rb9sdvgwkj3x\nTiempo Rentado: 1 días|<next>}"];
+TabletKindle:next->TelevisorHD:prev [arrowhead=vee, dir=both, tailclip=false];
+TelevisorHD:next->Macbook:prev [arrowhead=vee, dir=both, tailclip=false];
+Macbook:next->IWatch:prev [arrowhead=vee, dir=both, tailclip=false];
+IWatch:next->Fridge:prev [arrowhead=vee, dir=both, tailclip=false];
+Fridge:next->TabletKindle:prev [arrowhead=vee, dir=both, tailclip=false];
+}

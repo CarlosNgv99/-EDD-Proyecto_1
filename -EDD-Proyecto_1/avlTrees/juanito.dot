@@ -1,0 +1,1 @@
+digraph g{ node [fontname="Arial"];TelevisorHD[label=TelevisorHD/nID: cz5yoqgx20l9bwt];TabletKindle[label=TabletKindle/nID: mn05tfy9dtnx8r6];TabletKindle->{TelevisorHD/nID: mn05tfy9dtnx8r6];TabletKindle->{Samsung/nID: mn05tfy9dtnx8r6];Samsung[label=Samsung/nID: yy98h190opmp7px];}

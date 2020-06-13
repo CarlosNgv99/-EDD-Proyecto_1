@@ -21,6 +21,7 @@ public:
     void newUser();
     void signInAdmin();
     void adminMenu();
+    void transactionsReport();
     void departmentAssetsReport();
     void companyAssetsReport();
     void userMenu(Node*);
@@ -31,6 +32,7 @@ public:
     void assetsRented(Node*);
     void myAssets(Node*);
     void userAssetsReport();
+    void sortedTransactionsReport();
 };
 
 #endif /* menu_hpp */
