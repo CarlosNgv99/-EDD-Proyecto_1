@@ -239,6 +239,13 @@ void Menu::userMenu(Node* user)
                 break;
             case 4:
                 rentAsset(user);
+                break;
+            case 5:
+                rentedAssets(user);
+                break;
+            case 6:
+                myRentedAssets(user);
+                break;
             case 7:
                 mainMenu();
                 break;
@@ -559,4 +566,26 @@ void Menu::sortedTransactionsReport()
                 cout << ">> Eliga una de las opciones presentadas." << endl;
         }
     }while(option <= 0 || option > 3);
+}
+
+void Menu::myRentedAssets(Node* user)
+{
+    TreeNode* root;
+    system("clear");
+    cout << ">> ******************** "<< user -> getUser() -> getUser() <<" ********************" << endl;
+    cout << ">> ****************** Mis Activos Rentados ********************" << endl;
+    root = user -> getUser() -> getAVLTree() -> getRoot();
+    user -> getUser() -> getAVLTree() -> MyRentedAssets(root);
+    sleep(3);
+    userMenu(user);
+}
+
+void Menu::rentedAssets(Node * user)
+{
+    system("clear");
+    cout << ">> ******************** "<< user -> getUser() -> getUser() <<" ********************" << endl;
+    cout << ">> ****************** Activos Rentados ********************" << endl;
+    transactionList.SearchByName(user -> getUser() -> getUser());
+    sleep(4);
+    userMenu(user);
 }

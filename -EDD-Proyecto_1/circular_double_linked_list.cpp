@@ -178,7 +178,24 @@ void List::InsertSorted(Transaction * value)
     }
 }
 
-ListNode* List::Search(Transaction* pos)
+void List::SearchByName(std::string user)
+{
+    ListNode* p = first;
+    while(p -> getNext() != first)
+    {
+        if(p -> getTransaction() -> getUser() -> getUser() == user)
+        {
+            cout << ">> Transacción con ID: " << p-> getTransaction() -> getId() <<" ; Activo: "<< p -> getTransaction() -> getName() << "; Dias rentado: "<< p -> getTransaction() -> getTimeRented() << endl;
+        }
+        p = p -> getNext();
+    }
+    if(p -> getTransaction() -> getUser() -> getUser() == user)
+    {
+        cout << ">> Transacción con ID: " << p-> getTransaction() -> getId() <<" ; Activo: "<< p -> getTransaction() -> getName() << "; Dias rentado: "<< p -> getTransaction() -> getTimeRented() << endl;
+    }
+}
+
+ListNode* List::Search(Transaction* value)
 {
     if(first == NULL)
     {
@@ -190,17 +207,19 @@ ListNode* List::Search(Transaction* pos)
         ListNode* p = first;
         while(p -> next != last)
         {
-            if(p -> getTransaction() == pos)
+             p = p -> next;
+            if(p -> getTransaction() == value)
             {
                 cout << ">> Transacción con ID: " << p-> getTransaction() -> getId() <<" del usuario: "<< p -> getTransaction() -> getUser() << endl;
                 return p;
             }
-            p = p -> next;
+           
         }
         return nullptr;
     }
     
 }
+
 
 void List::Remove(Transaction* value)
 {

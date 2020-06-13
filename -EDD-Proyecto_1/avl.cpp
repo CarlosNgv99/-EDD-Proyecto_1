@@ -540,6 +540,18 @@ void Tree::Preorder(TreeNode *node)
     }
 }
 
+void Tree::MyRentedAssets(TreeNode* node)
+{
+    if(node != NULL)
+    {
+        if(node -> getAsset() -> rented == true){
+           std::cout <<">> ID: " << node -> getAsset() -> getIdNum() << " ; Nombre: " << node -> getAsset() -> getName() << "; Descripción: " << node ->getAsset() -> getDescription() << std::endl;
+        }
+        Preorder(node -> left);
+        Preorder(node -> right);
+    }
+}
+
 TreeNode* Tree::searchAssetIdNum(TreeNode *node, int id_num)
 {
     

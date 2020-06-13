@@ -270,8 +270,6 @@ bool Matrix::verifyX(string value, Node* start,Node* nodeValue)
         }
         start -> setBack(nodeValue);
         nodeValue -> setFront(start);
-        cout << "Front:" << start -> getData() << endl;
-        cout << "Back:" << start -> getBack() -> getData() << endl;
         return true;
     }
     return false;

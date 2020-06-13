@@ -51,6 +51,7 @@ public:
     TreeNode* Search(TreeNode*, std::string data);
     TreeNode* LRestructure(TreeNode* p, int* auxValue);
     TreeNode* RRestructure(TreeNode* p, int* auxValue);
+    void MyRentedAssets(TreeNode*);
     void Inorder(TreeNode* node);
     void Preorder(TreeNode* node);
     TreeNode* searchAssetIdNum(TreeNode* node, int);

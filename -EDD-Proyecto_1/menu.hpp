@@ -30,7 +30,8 @@ public:
     void modifyAsset(Node*);
     void rentAsset(Node*);
     void assetsRented(Node*);
-    void myAssets(Node*);
+    void myRentedAssets(Node*);
+    void rentedAssets(Node*);
     void userAssetsReport();
     void sortedTransactionsReport();
 };

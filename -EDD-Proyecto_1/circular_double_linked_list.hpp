@@ -50,7 +50,9 @@ public:
     void Remove(Transaction*);
     void RemoveFirst();
     void RemoveLast();
+    void SearchByName(std::string);
     ListNode* Search(Transaction*);
+
     void Display();
     void graphAsc();
     void graphDesc();
