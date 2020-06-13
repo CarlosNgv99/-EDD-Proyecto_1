@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		61021383248EC6D900E03463 /* sparse_matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61021381248EC6D900E03463 /* sparse_matrix.cpp */; };
 		61021386248EC8A200E03463 /* menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61021384248EC8A200E03463 /* menu.cpp */; };
+		612585D0249593D20005E45A /* linked_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 612585CE249593D20005E45A /* linked_list.cpp */; };
 		612CB3D32490B37F007D4CD9 /* transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 612CB3D12490B37F007D4CD9 /* transaction.cpp */; };
 		612CB3D62490B4BE007D4CD9 /* circular_double_linked_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 612CB3D42490B4BE007D4CD9 /* circular_double_linked_list.cpp */; };
 		612CB3D92490BBD2007D4CD9 /* assets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 612CB3D72490BBD2007D4CD9 /* assets.cpp */; };
@@ -35,6 +36,8 @@
 		61021382248EC6D900E03463 /* sparse_matrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sparse_matrix.hpp; sourceTree = "<group>"; };
 		61021384248EC8A200E03463 /* menu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = menu.cpp; sourceTree = "<group>"; };
 		61021385248EC8A200E03463 /* menu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = menu.hpp; sourceTree = "<group>"; };
+		612585CE249593D20005E45A /* linked_list.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = linked_list.cpp; sourceTree = "<group>"; };
+		612585CF249593D20005E45A /* linked_list.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = linked_list.hpp; sourceTree = "<group>"; };
 		612CB3D12490B37F007D4CD9 /* transaction.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = transaction.cpp; sourceTree = "<group>"; };
 		612CB3D22490B37F007D4CD9 /* transaction.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = transaction.hpp; sourceTree = "<group>"; };
 		612CB3D42490B4BE007D4CD9 /* circular_double_linked_list.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = circular_double_linked_list.cpp; sourceTree = "<group>"; };
@@ -98,6 +101,8 @@
 				612CB3D82490BBD2007D4CD9 /* assets.hpp */,
 				61B535262491A0F300496FD9 /* avl.cpp */,
 				61B535272491A0F300496FD9 /* avl.hpp */,
+				612585CE249593D20005E45A /* linked_list.cpp */,
+				612585CF249593D20005E45A /* linked_list.hpp */,
 			);
 			path = "-EDD-Proyecto_1";
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				612585D0249593D20005E45A /* linked_list.cpp in Sources */,
 				612CB3D62490B4BE007D4CD9 /* circular_double_linked_list.cpp in Sources */,
 				612CB3D32490B37F007D4CD9 /* transaction.cpp in Sources */,
 				61021383248EC6D900E03463 /* sparse_matrix.cpp in Sources */,

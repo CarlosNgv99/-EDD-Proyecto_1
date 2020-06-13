@@ -12,7 +12,9 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "linked_list.hpp"
 using namespace std;
+
 
 List::List()
 {
@@ -195,6 +197,23 @@ void List::SearchByName(std::string user)
     }
 }
 
+void List::sendTransactionLinkedList(std::string user, LinkedList *list)
+{
+    ListNode* p = first;
+    while(p -> getNext() != first)
+    {
+        if(p -> getTransaction() -> getUser() -> getUser() == user && p -> getTransaction() -> getAsset() -> rented == true)
+        {
+            list -> InsertLast(p -> getTransaction());
+        }
+        p = p -> getNext();
+    }
+    if(p -> getTransaction() -> getUser() -> getUser() == user && p -> getTransaction() -> getAsset() -> rented == true)
+    {
+        list -> InsertLast(p -> getTransaction());
+    }
+}
+
 ListNode* List::SearchUser(std::string user,int id_num)
 {
     ListNode* p = first;
@@ -374,4 +393,5 @@ void List::graphDesc()
     system(dotName.c_str());
     system(pngFile.c_str());
 }
+
 

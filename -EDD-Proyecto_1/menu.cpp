@@ -18,7 +18,7 @@
 #include "transaction.hpp"
 #include "assets.hpp"
 #include "circular_double_linked_list.hpp"
-
+#include "linked_list.hpp"
 using namespace std;
 Matrix matrix;
 Random rando;
@@ -197,6 +197,9 @@ void Menu::adminMenu()
                 break;
             case 6:
                 userAssetsReport();
+                break;
+            case 7:
+                rentedAssetsUserReport();
                 break;
             case 8:
                 sortedTransactionsReport();
@@ -489,7 +492,7 @@ void Menu::rentAsset(Node* user)
                 cout << ">> Ingresar días por rentar: " << endl;
                 cout << ">> ";
                 cin >> time_rented;
-                date = "12/06/2020";
+                date = "19/06/2020";
                 
                 // Getting data for transaction.
                 
@@ -640,4 +643,43 @@ void Menu::rentedAssets(Node * user)
                 break;
         }
     }while(option <= 0 || option > 3);
+}
+
+
+void Menu::rentedAssetsUserReport()
+{
+    std::string user;
+    int option;
+    system("clear");
+    cout << ">> ************************ Administrador ************************" << endl;
+    cout << ">> ******************* Reporte Activos Usuario *******************" << endl;
+    cout << ">> ******* 1. Ingresar usuario" << endl;
+    cout << ">> ******* 2. Regresar" << endl;
+    cout << ">> ";
+    cin >> option;
+    do{
+        switch(option)
+        {
+            case 1:
+            {
+                cout << ">> ****** Usuario:" << endl;
+                cout <<">> ";
+                cin >> user;
+                LinkedList* list = new LinkedList();
+                transactionList.sendTransactionLinkedList(user, list);
+                list -> graph(user);
+                //transactionList.graphUser(user);
+                cout << "Se ha generado el reporte..." << endl;
+                sleep(1);
+                adminMenu();
+                break;
+            }
+            case 2:
+                adminMenu();
+                break;
+            default:
+                cout << ">> Eliga una de las opciones presentadas." << endl;
+        }
+    }while(option <= 0 || option > 3);
+    
 }

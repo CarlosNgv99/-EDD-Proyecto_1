@@ -34,6 +34,8 @@ public:
     void rentedAssets(Node*);
     void userAssetsReport();
     void sortedTransactionsReport();
+    void rentedAssetsUserReport();
+
 };
 
 #endif /* menu_hpp */

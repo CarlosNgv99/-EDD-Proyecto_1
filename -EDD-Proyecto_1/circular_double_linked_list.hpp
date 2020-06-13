@@ -10,6 +10,7 @@
 #define list_hpp
 
 #include "transaction.hpp"
+#include "linked_list.hpp"
 #include <stdio.h>
 
 class List;
@@ -56,6 +57,7 @@ public:
     void Display();
     void graphAsc();
     void graphDesc();
+    void sendTransactionLinkedList(std::string,LinkedList*);
 };
 
 #endif /* list_hpp */

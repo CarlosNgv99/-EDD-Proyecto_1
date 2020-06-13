@@ -1,1 +1,0 @@
-digraph g{ node [fontname="Arial"];TV4K[label="Activo: TV4K\nID: 016s705ya6ypmsj"];GalaxyS10[label="Activo: GalaxyS10\nID: 8af3ubpw16r2tqi"];GalaxyS10->TV4K;GalaxyS10->GalaxYTAb;GalaxYTAb[label="Activo: GalaxYTAb\nID: 9rgftqfexs2wvzy"];}

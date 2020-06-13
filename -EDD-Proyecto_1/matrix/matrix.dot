@@ -3,34 +3,34 @@ rankdir = TB;
 node [shape=rectangle, height=0.5, width=0.5];
 graph[ nodesep = 0.5];
 node0 [label="Header"];
-Guatemala[label="Guatemala"]
-Jalapa[label="Jalapa"]
-Escuintla[label="Escuintla"]
-node0->Guatemala[dir=both];
-Guatemala->Jalapa[dir=both];
-Jalapa->Escuintla[dir=both];
-Apple[label="Apple"]
-Max[label="Max"]
-Samsung[label="Samsung"]
-node0->Apple[dir=both];
-Apple->Max[dir=both];
-Max->Samsung[dir=both];
-carlosngv[label="carlosngv"]
-Apple->carlosngv[constraint=false, dir=both];
-{rank=same; Apple; carlosngv;}
-Guatemala->carlosngv[dir=both]
-carlosngv[label="carlosngv"]
-carlosngv[label="carlosngv"]
-luis123[label="luis123"]
-Max->luis123[constraint=false, dir=both];
-{rank=same; Max; luis123;}
-Jalapa->luis123[dir=both]
-luis123[label="luis123"]
-luis123[label="luis123"]
-Juanito[label="Juanito"]
-Samsung->Juanito[constraint=false, dir=both];
-{rank=same; Samsung; Juanito;}
-Escuintla->Juanito[dir=both]
-Juanito[label="Juanito"]
-Juanito[label="Juanito"]
-{rank=same; node0; Guatemala; Jalapa; Escuintla;}}
+guatemala[label="guatemala"]
+jalapa[label="jalapa"]
+escuintla[label="escuintla"]
+node0->guatemala[dir=both];
+guatemala->jalapa[dir=both];
+jalapa->escuintla[dir=both];
+apple[label="apple"]
+max[label="max"]
+walmart[label="walmart"]
+node0->apple[dir=both];
+apple->max[dir=both];
+max->walmart[dir=both];
+carlos[label="carlos"]
+apple->carlos[constraint=false, dir=both];
+{rank=same; apple; carlos;}
+guatemala->carlos[dir=both]
+carlos[label="carlos"]
+carlos[label="carlos"]
+roberto[label="roberto"]
+max->roberto[constraint=false, dir=both];
+{rank=same; max; roberto;}
+jalapa->roberto[dir=both]
+roberto[label="roberto"]
+roberto[label="roberto"]
+juanito[label="juanito"]
+walmart->juanito[constraint=false, dir=both];
+{rank=same; walmart; juanito;}
+escuintla->juanito[dir=both]
+juanito[label="juanito"]
+juanito[label="juanito"]
+{rank=same; node0; guatemala; jalapa; escuintla;}}
