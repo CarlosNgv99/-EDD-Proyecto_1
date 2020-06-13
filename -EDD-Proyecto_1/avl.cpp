@@ -547,8 +547,8 @@ void Tree::MyRentedAssets(TreeNode* node)
         if(node -> getAsset() -> rented == true){
            std::cout <<">> ID: " << node -> getAsset() -> getIdNum() << " ; Nombre: " << node -> getAsset() -> getName() << "; Descripción: " << node ->getAsset() -> getDescription() << std::endl;
         }
-        Preorder(node -> left);
-        Preorder(node -> right);
+        MyRentedAssets(node -> left);
+        MyRentedAssets(node -> right);
     }
 }
 

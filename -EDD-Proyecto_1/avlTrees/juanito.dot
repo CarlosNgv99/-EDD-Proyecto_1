@@ -1,0 +1,1 @@
+digraph g{ node [fontname="Arial"];GalaxyTab[label="Activo: GalaxyTab\nID: 8af3ubpw16r2tqi"];GalaxyS10[label="Activo: GalaxyS10\nID: 9rgftqfexs2wvzy"];GalaxyS10->GalaxyTab;GalaxyS10->Watch;Watch[label="Activo: Watch\nID: aokyyq67isyqr7f"];Watch->Stereo;Stereo[label="Activo: Stereo\nID: d18rb9sdvgwkj3x"];}
