@@ -254,8 +254,8 @@
             filePath = "-EDD-Proyecto_1/avl.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "Tree::Remove(p, pAnt, auxValue, value)"
             landmarkType = "7">
          </BreakpointContent>

@@ -120,7 +120,6 @@ void Tree::Insert(Asset* asset, TreeNode* p, int* valueAux) // data to insert, N
     if(p != NULL) // verifies if pointer is not empty
     {
     //    if(asset -> getId() <  (p -> getAsset() -> getId()))
-      //  int result = (asset -> getId()).compare(p -> getAsset() -> getId());
         if(asset -> getIdNum() < p -> getAsset() -> getIdNum())
         {
             // starts method at left subtree.

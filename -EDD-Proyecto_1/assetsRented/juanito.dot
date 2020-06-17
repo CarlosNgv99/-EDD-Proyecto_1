@@ -1,9 +1,0 @@
-digraph g{
-rankdir=LR;
-node [shape=record];
-macbook[label = "Usuario que rentó: juanito\nActivo: macbook\nID: jmrcp48e4zxjr1h\nTiempo Rentado: 2 días \nFecha de renta: 19/06/2020"];
-macbook->iphonexs[arrowhead=vee, tailclip=false];
-iphonexs[label = "Usuario que rentó: juanito\nActivo: iphonexs\nID: lvhqq30pp9vkn03\nTiempo Rentado: 3 días \nFecha de renta: 19/06/2020"];
-iphonexs->estereo[arrowhead=vee, tailclip=false];
-estereo[label = "Usuario que rentó: juanito\nActivo: estereo\nID: wj3uraw49foeo5r\nTiempo Rentado: 4 días \nFecha de renta: 19/06/2020"];
-}
