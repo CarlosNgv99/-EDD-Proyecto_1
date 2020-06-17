@@ -1,0 +1,14 @@
+digraph g{
+rankdir=LR;
+node [shape=record];
+Televisor[label = "{<prev>|Usuario que rentó: carlosngv\nActivo: Televisor\nID: 549ezldlvnrt2x0\nTiempo Rentado: 5 días \nFecha de renta: 19/06/2020|<next>}"];
+Secadora[label = "{<prev>|Usuario que rentó: carlosngv\nActivo: Secadora\nID: 9rn3anvtcpvasxl\nTiempo Rentado: 9 días \nFecha de renta: 19/06/2020|<next>}"];
+Airpods[label = "{<prev>|Usuario que rentó: luis123\nActivo: Airpods\nID: jmrcp48e4zxjr1h\nTiempo Rentado: 10 días \nFecha de renta: 19/06/2020|<next>}"];
+Reloj[label = "{<prev>|Usuario que rentó: carlosngv\nActivo: Reloj\nID: ll8wwxcoq6g8mxw\nTiempo Rentado: 3 días \nFecha de renta: 19/06/2020|<next>}"];
+IPhone[label = "{<prev>|Usuario que rentó: luis123\nActivo: IPhone\nID: wj3uraw49foeo5r\nTiempo Rentado: 12 días \nFecha de renta: 19/06/2020|<next>}"];
+Televisor:next->Secadora:prev [arrowhead=vee, dir=both, tailclip=false];
+Secadora:next->Airpods:prev [arrowhead=vee, dir=both, tailclip=false];
+Airpods:next->Reloj:prev [arrowhead=vee, dir=both, tailclip=false];
+Reloj:next->IPhone:prev [arrowhead=vee, dir=both, tailclip=false];
+IPhone:next->Televisor:prev [arrowhead=vee, dir=both, tailclip=false];
+}

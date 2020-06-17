@@ -1,8 +1,9 @@
 digraph g{
 rankdir=LR;
 node [shape=record];
-papel[label = "Usuario que rentó: carlosngv\nActivo: papel\nID: 549ezldlvnrt2x0\nTiempo Rentado: 4 días \nFecha de renta: 19/06/2020"];
-PS4->trotrix[arrowhead=vee, tailclip=false];
-PS4[label = "Usuario que rentó: carlosngv\nActivo: PS4\nID: 9rn3anvtcpvasxl\nTiempo Rentado: 34 días \nFecha de renta: 19/06/2020"];
-trotrix->microondas[arrowhead=vee, tailclip=false];
-trotrix[label = "Usuario que rentó: carlosngv\nActivo: trotrix\nID: ll8wwxcoq6g8mxw\nTiempo Rentado: 3 días \nFecha de renta: 19/06/2020"];
+Televisor[label = "Usuario que rentó: carlosngv\nActivo: Televisor\nID: 549ezldlvnrt2x0\nTiempo Rentado: 5 días \nFecha de renta: 19/06/2020"];
+Televisor->Secadora[arrowhead=vee, tailclip=false];
+Secadora[label = "Usuario que rentó: carlosngv\nActivo: Secadora\nID: 9rn3anvtcpvasxl\nTiempo Rentado: 9 días \nFecha de renta: 19/06/2020"];
+Secadora->Reloj[arrowhead=vee, tailclip=false];
+Reloj[label = "Usuario que rentó: carlosngv\nActivo: Reloj\nID: ll8wwxcoq6g8mxw\nTiempo Rentado: 3 días \nFecha de renta: 19/06/2020"];
+}

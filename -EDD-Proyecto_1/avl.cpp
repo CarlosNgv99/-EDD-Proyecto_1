@@ -522,8 +522,14 @@ void Tree::Inorder(TreeNode* node)
     if(node != NULL)
     {
         Inorder(node -> left);
-        str += (node -> getAsset() -> getName()) + "[label=\"Activo: " + (node -> getAsset() -> getName()) +"\\nID: "+(node ->getAsset()->getId())+ "\"];";
-
+        if(node -> getAsset() -> rented == false)
+        {
+            str += (node -> getAsset() -> getName()) + "[label=\"Activo: " + (node -> getAsset() -> getName()) +"\\nID: "+(node ->getAsset()->getId())+ "\"];";
+        }
+        else
+        {
+            str += (node -> getAsset() -> getName()) + "[style=filled, color=red, label=\"Activo: " + (node -> getAsset() -> getName()) +"\\nID: "+(node ->getAsset()->getId())+ "\"];";
+        }
         if(node -> getLeft()!=NULL)
         {
             str+= (node -> getAsset() -> getName())+ "->" +(node->getLeft()->getAsset() -> getName())+";";
