@@ -306,6 +306,56 @@ Node* Matrix::SearchValue(string x, string y)
     return nullptr;
 }
 
+Node* Matrix::SearchValueZ(string x, string y, std::string username)
+{
+    Node* p = nullptr;
+    Node* x_header = header;
+    Node* y_header = header ;
+    Node* aux = nullptr; // Recorre en posicion x hacia abajo, conforme baja la cabecera y.
+    while(x_header -> getRight() != NULL)
+    {
+        x_header = x_header -> getRight();
+        if(x_header -> getData() == x)
+        {
+            aux = x_header;
+            while(y_header -> getDown() != NULL)
+            {
+                y_header = y_header -> getDown();
+                aux = aux -> getDown();
+                
+                if(y_header -> getData() == y || aux -> getDown()  == NULL )
+                {
+                    
+                    p = aux;
+                    if(p -> getUser() -> getUser() == username)
+                    {
+                        return p;
+                    }
+                    else
+                    {
+                        if(p -> getBack() != NULL)
+                        {
+                            while(p -> getBack() != NULL)
+                            {
+                                p = p -> getBack();
+                                if(p -> getUser() -> getUser() == username)
+                                {
+                                    return p;
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+                
+            }
+        }
+        
+    }
+    return nullptr;
+}
+
+
 void Matrix::printX()
 {
     Node* p = header;

@@ -400,7 +400,8 @@ void Tree::Remove(TreeNode *p, TreeNode *pAnt, int *auxValue, int value)
                         case 1:
                             pAnt -> setRight(p);
                             break;
-                        default: break;
+                        default:
+                            break;
                     }
                 }
                 else
@@ -427,6 +428,7 @@ void Tree::Remove(TreeNode *p, TreeNode *pAnt, int *auxValue, int value)
                     }
                     else
                     {
+                        
                         if(p == NULL)
                         {
                             root = NULL;
@@ -440,7 +442,7 @@ void Tree::Remove(TreeNode *p, TreeNode *pAnt, int *auxValue, int value)
                 }
                 else
                 {
-                    if(p -> getLeft() == NULL)
+                    if(aux -> getLeft() == NULL)
                     {
                         p = aux -> getRight();
                         if(*auxValue != 0)

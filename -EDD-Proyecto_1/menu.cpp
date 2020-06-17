@@ -72,7 +72,7 @@ void Menu::signIn()
     cout << ">> ******* Empresa: " << endl;
     cout << ">> ";
     cin >> company;
-    aux = matrix.SearchValue(department, company);
+    aux = matrix.SearchValueZ(department, company,user);
     
     if(aux == NULL)
     {

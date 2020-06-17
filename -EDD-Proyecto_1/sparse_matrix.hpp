@@ -127,6 +127,7 @@ public:
     bool verifyX(std::string,Node*,Node*);
     bool verifyY(std::string,Node*,Node*);
     Node* SearchValue(std::string,std::string);
+    Node* SearchValueZ(std::string,std::string,std::string);
     void SearchXAssets(std::string);
     void SearchYAssets(std::string);
     void searchAllAssets(std::string user);

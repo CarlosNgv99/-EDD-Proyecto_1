@@ -14,8 +14,8 @@
             filePath = "-EDD-Proyecto_1/sparse_matrix.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
+            startingLineNumber = "454"
+            endingLineNumber = "454"
             landmarkName = "Matrix::getDot()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "-EDD-Proyecto_1/sparse_matrix.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "452"
+            endingLineNumber = "452"
             landmarkName = "Matrix::getDot()"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "-EDD-Proyecto_1/sparse_matrix.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
             landmarkName = "Matrix::getDot()"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "-EDD-Proyecto_1/sparse_matrix.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "542"
-            endingLineNumber = "542"
+            startingLineNumber = "592"
+            endingLineNumber = "592"
             landmarkName = "Matrix::searchAllAssets(user)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "-EDD-Proyecto_1/sparse_matrix.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "546"
-            endingLineNumber = "546"
+            startingLineNumber = "596"
+            endingLineNumber = "596"
             landmarkName = "Matrix::searchAllAssets(user)"
             landmarkType = "7">
          </BreakpointContent>
@@ -257,6 +257,38 @@
             startingLineNumber = "337"
             endingLineNumber = "337"
             landmarkName = "Tree::Remove(p, pAnt, auxValue, value)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1CDAB0A7-33FF-43A3-8A0F-AEC15E56BDE7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "-EDD-Proyecto_1/menu.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "Menu::signIn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "76245D42-9643-466F-9D41-FB959368EB54"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "-EDD-Proyecto_1/menu.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "Menu::signIn()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
