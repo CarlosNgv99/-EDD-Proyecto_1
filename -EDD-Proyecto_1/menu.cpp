@@ -24,6 +24,7 @@ Matrix matrix;
 Random rando;
 List transactionList;
 int id_num = 1;
+int valueAux = 0;
 void Menu::mainMenu()
 {
     system("clear");
@@ -287,7 +288,7 @@ void Menu::removeAsset(Node* user)
     int band = 0;
     system("clear");
     int id_option,option;
-    cout << ">> ******************* "<< user -> getUser() -> getUser() <<" *******************" << endl;
+    cout << ">> ************************ "<< user -> getUser() -> getUser() <<" ************************" << endl;
     cout << ">> *********************** Eliminar Activo ************************" << endl;
     user -> getUser() -> getAVLTree() -> Preorder(user -> getUser() -> getAVLTree() -> getRoot());
     cout << ">> ******* 1. Eliminar Activo" << endl;
@@ -308,14 +309,15 @@ void Menu::removeAsset(Node* user)
                 aux = user -> getUser() -> getAVLTree() -> searchAssetIdNum(user -> getUser() -> getAVLTree() -> getRoot(), id_option); // Node found by ID.
                 system("clear");
                 cout << ">> ***************** "<< user -> getUser() -> getUser() <<" *****************" << endl;
-                cout << ">> ******************** Activo a Eliminar **********************" << endl;
+                cout << ">> ****************** Activo a Eliminar ********************" << endl;
                 cout << ">> ****** Nombre: " << aux ->getAsset()->getName() << endl;
                 cout << ">> ****** ID: " << aux -> getAsset() -> getIdNum() << endl;
                 cout << ">> ****** Descripción " << aux -> getAsset() -> getDescription() << endl;
-                user -> getUser() -> getAVLTree() -> Remove(user -> getUser() ->getAVLTree() -> getRoot(), NULL, &band, aux -> getAsset() -> getId());
-                cout << ">> Activo eliminado exitosamente. Regresando al menú..." << endl;
+                user -> getUser() -> getAVLTree() -> Remove(user -> getUser() ->getAVLTree() -> getRoot(), NULL, &band, aux -> getAsset() -> getIdNum());
+                cout << ">> ¡Activo eliminado exitosamente!" << endl;
+                cout << ">> Actualizando activos..." << endl;
                 sleep(1);
-                userMenu(user);
+                removeAsset(user);
                 break;
             }
             case 2:

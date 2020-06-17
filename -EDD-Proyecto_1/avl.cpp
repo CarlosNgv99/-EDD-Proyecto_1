@@ -41,7 +41,7 @@ TreeNode* Tree::LRRotation(TreeNode* p, TreeNode* aux)
     aux2 -> setLeft(aux);
     
     if(aux2 -> getFE() == -1){
-        p -> FE = 1;
+        p -> setFE(1);
     }
     else
     {
@@ -119,7 +119,9 @@ void Tree::Insert(Asset* asset, TreeNode* p, int* valueAux) // data to insert, N
     TreeNode* aux1, *aux2;
     if(p != NULL) // verifies if pointer is not empty
     {
-        if(asset -> getId() <  (p -> getAsset() -> getId()))
+    //    if(asset -> getId() <  (p -> getAsset() -> getId()))
+      //  int result = (asset -> getId()).compare(p -> getAsset() -> getId());
+        if(asset -> getIdNum() < p -> getAsset() -> getIdNum())
         {
             // starts method at left subtree.
             Insert(asset, p -> getLeft(), valueAux);
@@ -158,7 +160,8 @@ void Tree::Insert(Asset* asset, TreeNode* p, int* valueAux) // data to insert, N
         }
         else
         {
-            if(asset -> getId() > (p -> getAsset() -> getId()))
+           // if(asset -> getId() > (p -> getAsset() -> getId()))
+            if(asset -> getIdNum() > p -> getAsset() -> getIdNum())
             {
                 // Starts right subtree method.
                 Insert(asset, p -> getRight(), valueAux);
@@ -281,7 +284,7 @@ TreeNode* Tree::RRestructure(TreeNode *p, int *auxValue) // Restructure tree whe
                            aux -> setFE(1);
                            *auxValue = 0;
                            break;
-                       case 1:
+                       case -1:
                            p -> setFE(0);
                            aux -> setFE(0);
                            break;
@@ -316,20 +319,23 @@ void Tree::Susbstitute(TreeNode* p, TreeNode *aux, int *auxValue)
     }
     else
     {
-        aux -> setData(p -> getData());
+        
+        aux -> setAsset(p -> getAsset());
         p = p -> getLeft();
         *auxValue = 1;
     }
     aux -> setLeft(p);
 }
 
-void Tree::Remove(TreeNode *p, TreeNode *pAnt, int *auxValue, std::string value)
-{
+void Tree::Remove(TreeNode *p, TreeNode *pAnt, int *auxValue, int value)
+{    
     TreeNode* aux = nullptr;
     int top = 0;
     if(p != NULL)
     {
-        if(value < (p -> getAsset() -> getId()))
+        
+       // if(value < (p -> getAsset() -> getId()))
+        if(value < (p -> getAsset() -> getIdNum())) // Using ID nums as references.
         {
             if(*auxValue > 0)
             {
@@ -355,7 +361,8 @@ void Tree::Remove(TreeNode *p, TreeNode *pAnt, int *auxValue, std::string value)
                     case 1:
                         pAnt -> setRight(p);
                         break;
-                    default: break;
+                    default:
+                        break;
                 }
             }
             else
@@ -366,8 +373,9 @@ void Tree::Remove(TreeNode *p, TreeNode *pAnt, int *auxValue, std::string value)
     
         else
         {
-            if(value > (p -> getAsset() -> getId()))
+            if(value > (p -> getAsset() -> getIdNum()))
             {
+                
                 if(*auxValue < 0)
                 {
                     top = -1;
