@@ -321,26 +321,27 @@ Node* Matrix::SearchValueZ(string x, string y, std::string username)
             while(y_header -> getDown() != NULL)
             {
                 y_header = y_header -> getDown();
-                aux = aux -> getDown();
                 
-                if(y_header -> getData() == y || aux -> getDown()  == NULL )
+                if(y_header -> getData() == y)
                 {
-                    
-                    p = aux;
-                    if(p -> getUser() -> getUser() == username)
+                    while(aux -> getDown() != NULL)
                     {
-                        return p;
-                    }
-                    else
-                    {
-                        if(p -> getBack() != NULL)
+                        aux = aux -> getDown();
+                        if(aux -> getData() == username)
                         {
-                            while(p -> getBack() != NULL)
+                            return aux;
+                        }
+                        else
+                        {
+                            if(aux -> getBack() != NULL)
                             {
-                                p = p -> getBack();
-                                if(p -> getUser() -> getUser() == username)
+                                while(aux -> getBack() != NULL)
                                 {
-                                    return p;
+                                    aux = aux -> getBack();
+                                    if(aux -> getData() == username)
+                                    {
+                                        return aux;
+                                    }
                                 }
                             }
                         }

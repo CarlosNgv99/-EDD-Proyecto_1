@@ -119,8 +119,8 @@ void Tree::Insert(Asset* asset, TreeNode* p, int* valueAux) // data to insert, N
     TreeNode* aux1, *aux2;
     if(p != NULL) // verifies if pointer is not empty
     {
-    //    if(asset -> getId() <  (p -> getAsset() -> getId()))
-        if(asset -> getIdNum() < p -> getAsset() -> getIdNum())
+        if(asset -> getId() <  (p -> getAsset() -> getId()))
+    //    if(asset -> getIdNum() < p -> getAsset() -> getIdNum())
         {
             // starts method at left subtree.
             Insert(asset, p -> getLeft(), valueAux);
@@ -159,8 +159,8 @@ void Tree::Insert(Asset* asset, TreeNode* p, int* valueAux) // data to insert, N
         }
         else
         {
-           // if(asset -> getId() > (p -> getAsset() -> getId()))
-            if(asset -> getIdNum() > p -> getAsset() -> getIdNum())
+            if(asset -> getId() > (p -> getAsset() -> getId()))
+           // if(asset -> getIdNum() > p -> getAsset() -> getIdNum())
             {
                 // Starts right subtree method.
                 Insert(asset, p -> getRight(), valueAux);
@@ -326,15 +326,15 @@ void Tree::Susbstitute(TreeNode* p, TreeNode *aux, int *auxValue)
     aux -> setLeft(p);
 }
 
-void Tree::Remove(TreeNode *p, TreeNode *pAnt, int *auxValue, int value)
+void Tree::Remove(TreeNode *p, TreeNode *pAnt, int *auxValue, std::string value)
 {    
     TreeNode* aux = nullptr;
     int top = 0;
     if(p != NULL)
     {
         
-       // if(value < (p -> getAsset() -> getId()))
-        if(value < (p -> getAsset() -> getIdNum())) // Using ID nums as references.
+        if(value < (p -> getAsset() -> getId()))
+        //if(value < (p -> getAsset() -> getIdNum())) // Using ID nums as references.
         {
             if(*auxValue > 0)
             {
@@ -372,7 +372,8 @@ void Tree::Remove(TreeNode *p, TreeNode *pAnt, int *auxValue, int value)
     
         else
         {
-            if(value > (p -> getAsset() -> getIdNum()))
+            
+            if(value > (p -> getAsset() -> getId()))
             {
                 
                 if(*auxValue < 0)

@@ -313,7 +313,7 @@ void Menu::removeAsset(Node* user)
                 cout << ">> ****** Nombre: " << aux ->getAsset()->getName() << endl;
                 cout << ">> ****** ID: " << aux -> getAsset() -> getIdNum() << endl;
                 cout << ">> ****** Descripción " << aux -> getAsset() -> getDescription() << endl;
-                user -> getUser() -> getAVLTree() -> Remove(user -> getUser() ->getAVLTree() -> getRoot(), NULL, &band, aux -> getAsset() -> getIdNum());
+                user -> getUser() -> getAVLTree() -> Remove(user -> getUser() ->getAVLTree() -> getRoot(), NULL, &band, aux -> getAsset() -> getId());
                 cout << ">> ¡Activo eliminado exitosamente!" << endl;
                 cout << ">> Actualizando activos..." << endl;
                 sleep(1);

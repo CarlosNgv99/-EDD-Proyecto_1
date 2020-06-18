@@ -53,7 +53,7 @@ public:
     TreeNode* searchAssetIdNum(TreeNode* node, int);
     void Susbstitute(TreeNode* p, TreeNode* aux, int* auxValue);
     void Insert(Asset* asset, TreeNode* p, int* band);
-    void Remove(TreeNode* p, TreeNode* pAnt, int* axuValue, int value);
+    void Remove(TreeNode* p, TreeNode* pAnt, int* axuValue, std::string value);
     TreeNode* getRoot(){return root;};
     void graphAVL(std::string);
     
